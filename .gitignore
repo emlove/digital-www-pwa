@@ -44,3 +44,8 @@ Thumbs.db
 # Next.js
 .next
 out
+
+# Yarn
+.yarn/*
+!.yarn/releases
+yarn-error.log
