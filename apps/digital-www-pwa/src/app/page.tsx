@@ -1,6 +1,9 @@
-import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import Image from 'next/image'
+'use client';
+
+import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
+import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import Image from 'next/image';
+import { useState, useEffect } from 'react';
 
 const user = {
   name: 'Tom Cook',
@@ -30,11 +33,19 @@ function classNames(...classes: string[]) {
 }
 
 export default function Index() {
-  /*
-   * Replace the elements below with your own.
-   *
-   * Note: The corresponding styles are in the ./index.tailwind file.
-   */
+  const [feed, setFeed] = useState(null);
+
+  useEffect(() => {
+    async function fetchFeed() {
+      const res = await fetch('/api/feed');
+      const data = await res.json();
+      setFeed(data);
+    }
+    fetchFeed();
+  }, []);
+
+  if (!feed) return <div>Reticulating splines ...</div>
+
   return (
     <>
       {/*
@@ -184,7 +195,14 @@ export default function Index() {
           </div>
         </header>
         <main>
-          <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">{/* Your content */}</div>
+          <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+            <ul>         
+              {feed.coalesce.map((event) => {
+                <li>{event.name}</li>
+              })}
+            </ul>
+   
+          </div>
         </main>
       </div>
     </>
