@@ -15,15 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@digital-www-pwa/event-types": ["libs/event/types/src/index.ts"],
       "@digital-www-pwa/feed-context": ["libs/feed/context/src/index.ts"],
-      "@digital-www-pwa/feed-context/server": [
-        "libs/feed/context/src/server.ts"
-      ],
-      "@digital-www-pwa/feed-providers": ["libs/feed/providers/src/index.ts"],
-      "@digital-www-pwa/feed-providers/server": [
-        "libs/feed/providers/src/server.ts"
-      ],
-      "@digital-www/event-types": ["libs/event/types/src/index.ts"]
+      "@digital-www-pwa/feed-provider": ["libs/feed/provider/src/index.ts"],
+      "@digital-www-pwa/feed-types": ["libs/feed/types/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

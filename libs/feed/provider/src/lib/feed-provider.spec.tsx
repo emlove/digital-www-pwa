@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import FeedProviders from './feed-providers';
+import { FeedProvider } from './feed-provider';
 
 describe('FeedProviders', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<FeedProviders />);
+    const { baseElement } = render(<FeedProvider />);
     expect(baseElement).toBeTruthy();
   });
 });

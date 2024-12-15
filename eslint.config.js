@@ -34,7 +34,6 @@ module.exports = [
       ],
       'pluginImport/newline-after-import': 'warn',
       'pluginImport/no-absolute-path': 'error',
-      'pluginImport/no-anonymous-default-export': 'error',
       'pluginImport/no-dynamic-require': 'error',
       'pluginImport/no-mutable-exports': 'error',
       'pluginImport/no-self-import': 'error',

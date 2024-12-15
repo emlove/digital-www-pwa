@@ -1,4 +1,4 @@
-import { DayOfWeek, EventRecurrance } from './events.enum';
+import { DayOfWeek, EventRecurrance } from './event.enum';
 
 export type Event = {
   event_id: number;
