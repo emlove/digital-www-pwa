@@ -1,0 +1,19 @@
+{
+  "name": "event-types",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/event/types/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:swc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/event/types",
+        "main": "libs/event/types/src/index.ts",
+        "tsConfig": "libs/event/types/tsconfig.lib.json",
+        "assets": ["libs/event/types/*.md"]
+      }
+    }
+  }
+}
