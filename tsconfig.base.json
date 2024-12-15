@@ -22,6 +22,7 @@
       "@digital-www-pwa/top-nav-component": [
         "libs/top-nav/component/src/index.ts"
       ],
+      "@digital-www-pwa/top-nav-context": ["libs/top-nav/context/src/index.ts"],
       "@digital-www-pwa/top-nav-provider": [
         "libs/top-nav/provider/src/index.ts"
       ]
