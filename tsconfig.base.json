@@ -18,7 +18,10 @@
       "@digital-www-pwa/event-types": ["libs/event/types/src/index.ts"],
       "@digital-www-pwa/feed-context": ["libs/feed/context/src/index.ts"],
       "@digital-www-pwa/feed-provider": ["libs/feed/provider/src/index.ts"],
-      "@digital-www-pwa/feed-types": ["libs/feed/types/src/index.ts"]
+      "@digital-www-pwa/feed-types": ["libs/feed/types/src/index.ts"],
+      "@digital-www-pwa/top-nav-component": [
+        "libs/top-nav/component/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

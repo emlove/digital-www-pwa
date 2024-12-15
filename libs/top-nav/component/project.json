@@ -1,0 +1,9 @@
+{
+  "name": "top-nav-component",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/top-nav/component/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project top-nav-component --web",
+  "targets": {}
+}
