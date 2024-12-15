@@ -19,7 +19,7 @@ const user = {
   height: 256,
 };
 const navigation = [
-  { name: 'Events', href: '#', current: true },
+  { name: 'Events', href: '/events/Wednesday', current: false },
   { name: 'Favorites', href: '#', current: false },
   { name: 'Agenda', href: '#', current: false },
   { name: 'Art', href: '#', current: false },
