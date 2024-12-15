@@ -1,3 +1,4 @@
+import { TopNavState } from '@digital-www-pwa/top-nav-types';
 import { createContext, useContext } from 'react';
 
 export const TopNavContext = createContext<TopNavState | undefined>(undefined);

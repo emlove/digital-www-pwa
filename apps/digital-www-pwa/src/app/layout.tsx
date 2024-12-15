@@ -1,6 +1,7 @@
 import './global.css';
 
 import { TopNavComponent } from '@digital-www-pwa/top-nav-component';
+import { TopNavProvider } from '@digital-www-pwa/top-nav-provider';
 
 import { FeedProvider } from '@digital-www-pwa/feed-provider';
 
@@ -17,10 +18,14 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full bg-gray-100">
       <body className="h-full">
-        <div className="min-h-full">
-          <TopNavComponent />
-          <FeedProvider>{children}</FeedProvider>
-        </div>
+        <FeedProvider>
+          <TopNavProvider>
+            <div className="min-h-full">
+              <TopNavComponent />
+              {children}
+            </div>
+          </TopNavProvider>
+        </FeedProvider>
       </body>
     </html>
   );

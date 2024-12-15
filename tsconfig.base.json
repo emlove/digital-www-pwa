@@ -25,7 +25,8 @@
       "@digital-www-pwa/top-nav-context": ["libs/top-nav/context/src/index.ts"],
       "@digital-www-pwa/top-nav-provider": [
         "libs/top-nav/provider/src/index.ts"
-      ]
+      ],
+      "@digital-www-pwa/top-nav-types": ["libs/top-nav/types/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
