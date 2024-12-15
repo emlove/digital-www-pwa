@@ -16,7 +16,8 @@
         "nrwl.angular-console",
         "redhat.vscode-yaml",
         "stylelint.vscode-stylelint",
-        "github.vscode-github-actions"
+        "github.vscode-github-actions",
+        "bradlc.vscode-tailwindcss"
       ],
       "settings": {
         "editor.tabSize": 2,

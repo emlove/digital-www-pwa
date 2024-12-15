@@ -1,6 +1,14 @@
 'use client';
 
-import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
+import {
+  Disclosure,
+  DisclosureButton,
+  DisclosurePanel,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuItems,
+} from '@headlessui/react';
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
@@ -11,8 +19,8 @@ const user = {
   imageUrl:
     'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
   width: 256,
-  height: 256
-}
+  height: 256,
+};
 const navigation = [
   { name: 'Events', href: '#', current: true },
   { name: 'Favorites', href: '#', current: false },
@@ -20,16 +28,16 @@ const navigation = [
   { name: 'Art', href: '#', current: false },
   { name: 'Camps', href: '#', current: false },
   { name: 'Radio', href: '#', current: false },
-  { name: 'Vehicles', href: '#', current: false }
-]
+  { name: 'Vehicles', href: '#', current: false },
+];
 const userNavigation = [
   { name: 'Your Profile', href: '#' },
   { name: 'Settings', href: '#' },
   { name: 'Sign out', href: '#' },
-]
+];
 
 function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(' ');
 }
 
 export default function Index() {
@@ -44,7 +52,7 @@ export default function Index() {
     fetchFeed();
   }, []);
 
-  if (!feed) return <div>Reticulating splines ...</div>
+  if (!feed) return <div>Reticulating splines ...</div>;
 
   return (
     <>
@@ -78,8 +86,10 @@ export default function Index() {
                         href={item.href}
                         aria-current={item.current ? 'page' : undefined}
                         className={classNames(
-                          item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                          'rounded-md px-3 py-2 text-sm font-medium',
+                          item.current
+                            ? 'bg-gray-900 text-white'
+                            : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                          'rounded-md px-3 py-2 text-sm font-medium'
                         )}
                       >
                         {item.name}
@@ -105,7 +115,13 @@ export default function Index() {
                       <MenuButton className="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                         <span className="absolute -inset-1.5" />
                         <span className="sr-only">Open user menu</span>
-                        <Image alt="" src={user.imageUrl} className="size-8 rounded-full" width={user.width} height={user.height} />
+                        <Image
+                          alt=""
+                          src={user.imageUrl}
+                          className="size-8 rounded-full"
+                          width={user.width}
+                          height={user.height}
+                        />
                       </MenuButton>
                     </div>
                     <MenuItems
@@ -131,8 +147,14 @@ export default function Index() {
                 <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                   <span className="absolute -inset-0.5" />
                   <span className="sr-only">Open main menu</span>
-                  <Bars3Icon aria-hidden="true" className="block size-6 group-data-[open]:hidden" />
-                  <XMarkIcon aria-hidden="true" className="hidden size-6 group-data-[open]:block" />
+                  <Bars3Icon
+                    aria-hidden="true"
+                    className="block size-6 group-data-[open]:hidden"
+                  />
+                  <XMarkIcon
+                    aria-hidden="true"
+                    className="hidden size-6 group-data-[open]:block"
+                  />
                 </DisclosureButton>
               </div>
             </div>
@@ -147,8 +169,10 @@ export default function Index() {
                   href={item.href}
                   aria-current={item.current ? 'page' : undefined}
                   className={classNames(
-                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                    'block rounded-md px-3 py-2 text-base font-medium',
+                    item.current
+                      ? 'bg-gray-900 text-white'
+                      : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                    'block rounded-md px-3 py-2 text-base font-medium'
                   )}
                 >
                   {item.name}
@@ -158,11 +182,21 @@ export default function Index() {
             <div className="border-t border-gray-700 pb-3 pt-4">
               <div className="flex items-center px-5">
                 <div className="shrink-0">
-                  <Image alt="" src={user.imageUrl} className="size-10 rounded-full" width={user.width} height={user.height} />
+                  <Image
+                    alt=""
+                    src={user.imageUrl}
+                    className="size-10 rounded-full"
+                    width={user.width}
+                    height={user.height}
+                  />
                 </div>
                 <div className="ml-3">
-                  <div className="text-base/5 font-medium text-white">{user.name}</div>
-                  <div className="text-sm font-medium text-gray-400">{user.email}</div>
+                  <div className="text-base/5 font-medium text-white">
+                    {user.name}
+                  </div>
+                  <div className="text-sm font-medium text-gray-400">
+                    {user.email}
+                  </div>
                 </div>
                 <button
                   type="button"
@@ -191,17 +225,18 @@ export default function Index() {
 
         <header className="bg-white shadow">
           <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-            <h1 className="text-3xl font-bold tracking-tight text-gray-900">Dashboard</h1>
+            <h1 className="text-3xl font-bold tracking-tight text-gray-900">
+              Dashboard
+            </h1>
           </div>
         </header>
         <main>
           <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-            <ul>         
+            <ul>
               {feed.coalesce.map((event) => {
-                <li>{event.name}</li>
+                <li>{event.name}</li>;
               })}
             </ul>
-   
           </div>
         </main>
       </div>
