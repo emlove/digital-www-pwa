@@ -1,4 +1,6 @@
 const nx = require('@nx/eslint-plugin');
+const eslintPluginUnicorn = require('eslint-plugin-unicorn');
+const eslintPluginImport = require('eslint-plugin-import');
 
 module.exports = [
   ...nx.configs['flat/base'],
@@ -6,6 +8,12 @@ module.exports = [
   ...nx.configs['flat/javascript'],
   {
     ignores: ['**/dist'],
+  },
+  {
+    plugins: {
+      unicorn: eslintPluginUnicorn,
+      pluginImport: eslintPluginImport,
+    },
   },
   {
     files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
@@ -24,25 +32,25 @@ module.exports = [
           ],
         },
       ],
-      'import/newline-after-import': 'warn',
-      'import/no-absolute-path': 'error',
-      'import/no-anonymous-default-export': 'error',
-      'import/no-dynamic-require': 'error',
-      'import/no-extraneous-dependencies': 'error',
-      'import/no-mutable-exports': 'error',
-      'import/no-self-import': 'error',
-      'import/no-useless-path-segments': 'error',
-      'import/no-webpack-loader-syntax': 'error',
-      'import/default': 'off',
-      'import/named': 'off',
-      'import/namespace': 'off',
-      'import/no-cycle': 'off',
-      'import/no-deprecated': 'off',
-      'import/no-named-as-default': 'off',
-      'import/no-named-as-default-member': 'off',
-      'import/no-namespace': 'off',
-      'import/no-unused-modules': 'off',
-      'import/order': [
+      'pluginImport/newline-after-import': 'warn',
+      'pluginImport/no-absolute-path': 'error',
+      'pluginImport/no-anonymous-default-export': 'error',
+      'pluginImport/no-dynamic-require': 'error',
+      'pluginImport/no-extraneous-dependencies': 'error',
+      'pluginImport/no-mutable-exports': 'error',
+      'pluginImport/no-self-import': 'error',
+      'pluginImport/no-useless-path-segments': 'error',
+      'pluginImport/no-webpack-loader-syntax': 'error',
+      'pluginImport/default': 'off',
+      'pluginImport/named': 'off',
+      'pluginImport/namespace': 'off',
+      'pluginImport/no-cycle': 'off',
+      'pluginImport/no-deprecated': 'off',
+      'pluginImport/no-named-as-default': 'off',
+      'pluginImport/no-named-as-default-member': 'off',
+      'pluginImport/no-namespace': 'off',
+      'pluginImport/no-unused-modules': 'off',
+      'pluginImport/order': [
         'warn',
         {
           alphabetize: {
