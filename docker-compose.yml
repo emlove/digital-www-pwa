@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  dev:
+    build: .
+    command: sh -c "tail -f /dev/null"
+    working_dir: /src
+    volumes:
+      - ./:/src:delegated
+      - /src/node_modules
+      - /src/dist
+      - /src/.yarn/cache
+      - ~/.ssh:/root/.ssh:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 0.0.0.0:3000:3000
