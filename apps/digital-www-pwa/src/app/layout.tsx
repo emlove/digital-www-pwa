@@ -1,3 +1,4 @@
+import { FeedProvider } from '@digital-www-pwa/feed-provider';
 import './global.css';
 
 export const metadata = {
@@ -12,7 +13,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <FeedProvider>{children}</FeedProvider>
+      </body>
     </html>
   );
 }

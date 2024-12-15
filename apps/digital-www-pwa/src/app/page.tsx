@@ -11,7 +11,8 @@ import {
 } from '@headlessui/react';
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+
+import { useFeedContext } from '@digital-www-pwa/feed-context';
 
 const user = {
   name: 'Tom Cook',
@@ -41,19 +42,7 @@ function classNames(...classes: string[]) {
 }
 
 export default function Index() {
-  const [feed, setFeed] = useState(null);
-
-  useEffect(() => {
-    async function fetchFeed() {
-      const res = await fetch('/api/feed');
-      const data = await res.json();
-      setFeed(data);
-    }
-    fetchFeed();
-  }, []);
-
-  if (!feed) return <div>Reticulating splines ...</div>;
-
+  const feed = useFeedContext();
   return (
     <>
       {/*
@@ -234,7 +223,7 @@ export default function Index() {
           <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
             <ul>
               {feed.coalesce.map((event) => {
-                <li>{event.name}</li>;
+                return <li key={event.event_id}>{event.title}</li>;
               })}
             </ul>
           </div>

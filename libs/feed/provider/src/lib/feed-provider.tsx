@@ -1,7 +1,13 @@
-import { useEffect, useState } from 'react';
+'use client';
 
-export const FeedProvider = ({ children }) => {
-  const [feed, setFeed] = useState(null);
+import { FeedContext } from '@digital-www-pwa/feed-context';
+import { Feed } from '@digital-www-pwa/feed-types';
+import { ReactNode, useEffect, useState } from 'react';
+
+export const FeedProvider = ({ children }: { children: ReactNode }) => {
+  const [feed, setFeed] = useState<Feed>({
+    coalesce: [],
+  });
 
   useEffect(() => {
     async function fetchFeed() {
@@ -16,5 +22,7 @@ export const FeedProvider = ({ children }) => {
     return <div>Reticulating splines ...</div>;
   }
 
-  return <></>;
+  return <FeedContext.Provider value={feed}>{children}</FeedContext.Provider>;
 };
+
+export default FeedProvider;
