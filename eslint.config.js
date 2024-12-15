@@ -1,6 +1,6 @@
 const nx = require('@nx/eslint-plugin');
-const eslintPluginUnicorn = require('eslint-plugin-unicorn');
 const eslintPluginImport = require('eslint-plugin-import');
+const eslintPluginUnicorn = require('eslint-plugin-unicorn');
 
 module.exports = [
   ...nx.configs['flat/base'],
@@ -36,7 +36,6 @@ module.exports = [
       'pluginImport/no-absolute-path': 'error',
       'pluginImport/no-anonymous-default-export': 'error',
       'pluginImport/no-dynamic-require': 'error',
-      'pluginImport/no-extraneous-dependencies': 'error',
       'pluginImport/no-mutable-exports': 'error',
       'pluginImport/no-self-import': 'error',
       'pluginImport/no-useless-path-segments': 'error',
