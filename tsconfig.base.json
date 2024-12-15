@@ -15,6 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@digital-www-pwa/feed-providers": ["libs/feed/providers/src/index.ts"],
+      "@digital-www-pwa/feed-providers/server": [
+        "libs/feed/providers/src/server.ts"
+      ],
       "@digital-www/event-types": ["libs/event/types/src/index.ts"]
     }
   },
