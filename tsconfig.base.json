@@ -23,6 +23,7 @@
       "@digital-www-pwa/link-component/server": [
         "libs/link/component/src/server.ts"
       ],
+      "@digital-www-pwa/link-types": ["libs/link/types/src/index.ts"],
       "@digital-www-pwa/top-nav-component": [
         "libs/top-nav/component/src/index.ts"
       ],
