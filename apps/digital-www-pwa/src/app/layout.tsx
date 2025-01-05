@@ -1,9 +1,8 @@
 import './global.css';
 
+import { FeedProvider } from '@digital-www-pwa/feed-provider';
 import { TopNavComponent } from '@digital-www-pwa/top-nav-component';
 import { TopNavProvider } from '@digital-www-pwa/top-nav-provider';
-
-import { FeedProvider } from '@digital-www-pwa/feed-provider';
 
 export const metadata = {
   title: 'Lakes of Fire 2025 Digital WWW',
