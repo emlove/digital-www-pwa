@@ -3,7 +3,7 @@
 import dayjs from 'dayjs';
 
 import { useFeedContext } from '@digital-www-pwa/feed-context';
-import { AgendaView } from '@digital-www-pwa/agenda-view';
+import { AgendaView } from '@digital-www-pwa/page-agenda-view';
 import { useMemo } from 'react';
 
 export default function Page() {
