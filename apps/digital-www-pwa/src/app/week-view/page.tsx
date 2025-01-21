@@ -3,17 +3,18 @@
 import dayjs from 'dayjs';
 
 import { useFeedContext } from '@digital-www-pwa/feed-context';
-import { AgendaView } from '@digital-www-pwa/page-agenda-view';
+import { AgendaView, CalendarEvent } from '@digital-www-pwa/page-agenda-view';
+import { Event, EventTime } from '@digital-www-pwa/event-types';
 import { useMemo } from 'react';
 
 export default function Page() {
   const feed = useFeedContext();
   const calendarEvents = useMemo(() => {
-    return feed.coalesce.reduce((calendarEvents, feedEvent) => {
-      const newEvents = feedEvent.event_times.map((eventTime) => ({
+    return feed.coalesce.reduce((calendarEvents : CalendarEvent[], feedEvent : Event) => {
+      const newEvents = feedEvent.event_times.map((eventTime : EventTime) => ({
           id: eventTime.event_time_id,
-          start: dayjs(eventTime.starting),
-          end: dayjs(eventTime.ending),
+          start: dayjs(eventTime.starting).toDate(),
+          end: dayjs(eventTime.ending).toDate(),
           title: feedEvent.title,
         }
       ));

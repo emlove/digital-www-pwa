@@ -198,19 +198,20 @@ const rowSpanClasses = {
   47: 'row-end-[span_47]',
 } as const;
 
-type Props<RouteInferred extends string> = {
-  dates: `${number}${number}${number}${number}-${number}${number}-${number}${number}`[];
-  events: {
-    id: number;
-    start: Date;
-    end: Date;
-    title: string;
-    href: Route<RouteInferred>;
-    isSecondary?: boolean;
-  }[];
+export type CalendarEvent = {
+  id: number;
+  start: Date;
+  end: Date;
+  title: string;
+  isSecondary?: boolean;
 };
 
-export function AgendaView(props: Props<Route>) {
+type Props = {
+  dates: `${number}${number}${number}${number}-${number}${number}-${number}${number}`[];
+  events: CalendarEvent[];
+};
+
+export function AgendaView(props: Props) {
   const timeSlotColCount = 1;
 
   const events = props.events.map((event) => {
