@@ -3,6 +3,10 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+
+permissions:
+  pull-requests: write
 
 jobs:
   build:
@@ -37,8 +41,9 @@ jobs:
           key: ${{ runner.os }}-${{ runner.arch }}-yarn-cache-${{ hashFiles('yarn.lock') }}
           restore-keys: ${{ runner.os }}-${{ runner.arch }}-yarn-cache-
 
-      - run: yarn install
-      - uses: nrwl/nx-set-shas@v4
+      - name: Install Node Modules
+        shell: bash
+        run: yarn install
 
       - name: Build app
         shell: bash
