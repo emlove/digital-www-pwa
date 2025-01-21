@@ -1,0 +1,9 @@
+{
+  "name": "agenda-view",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/agenda-view/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project agenda-view --web",
+  "targets": {}
+}

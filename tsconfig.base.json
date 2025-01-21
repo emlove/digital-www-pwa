@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@digital-www-pwa/agenda-view": ["libs/agenda-view/src/index.ts"],
       "@digital-www-pwa/event-types": ["libs/event/types/src/index.ts"],
       "@digital-www-pwa/feed-context": ["libs/feed/context/src/index.ts"],
       "@digital-www-pwa/feed-provider": ["libs/feed/provider/src/index.ts"],

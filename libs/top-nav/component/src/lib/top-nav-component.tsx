@@ -22,7 +22,7 @@ const user = {
 const navigation = [
   { name: 'Events', href: '/events/Wednesday', current: false },
   { name: 'Favorites', href: '#', current: false },
-  { name: 'Agenda', href: '#', current: false },
+  { name: 'Agenda', href: '/agenda', current: false },
   { name: 'Art', href: '#', current: false },
   { name: 'Camps', href: '#', current: false },
   { name: 'Radio', href: '#', current: false },
