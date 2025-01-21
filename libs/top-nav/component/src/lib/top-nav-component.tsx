@@ -21,12 +21,12 @@ const user = {
 };
 const navigation = [
   { name: 'Events', href: '/events/Wednesday', current: false },
-  { name: 'Favorites', href: '#', current: false },
-  { name: 'Agenda', href: '/agenda', current: false },
-  { name: 'Art', href: '#', current: false },
-  { name: 'Camps', href: '#', current: false },
-  { name: 'Radio', href: '#', current: false },
-  { name: 'Vehicles', href: '#', current: false },
+  { name: 'Favorites', href: '/favorites/Wednesday', current: false },
+  { name: 'Agenda', href: '/week-view', current: false },
+  { name: 'Art', href: '/art', current: false },
+  { name: 'Camps', href: '/camps', current: false },
+  { name: 'Radio', href: '/radio', current: false },
+  { name: 'Vehicles', href: '/vehicles', current: false },
 ];
 const userNavigation = [
   { name: 'Your Profile', href: '#' },
@@ -45,18 +45,29 @@ export function TopNavComponent() {
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
             <div className="shrink-0">
-              <Image
-                alt="Lakes Of Fire"
-                src="https://2024.lakesoffire.org/android-chrome-512x512.png"
-                className="size-8"
-                width="512"
-                height="512"
-              />
+              <Link to="/">
+                <Image
+                  alt="Lakes Of Fire"
+                  src="https://2024.lakesoffire.org/android-chrome-512x512.png"
+                  className="size-8"
+                  width="512"
+                  height="512"
+                />
+              </Link>
             </div>
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
                 {navigation.map((item) => (
-                  <Link key={item.name} to={item.href} current={item.current}>
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    className={classNames(
+                      item.current
+                        ? 'bg-gray-900 text-white'
+                        : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                      'rounded-md px-3 py-2 text-sm font-medium'
+                    )}
+                  >
                     {item.name}
                   </Link>
                 ))}
