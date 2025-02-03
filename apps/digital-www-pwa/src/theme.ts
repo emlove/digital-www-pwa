@@ -2,6 +2,13 @@
 import { createTheme } from '@mui/material/styles';
 
 let theme = createTheme({
+  typography: {
+    fontFamily: 'var(--font-roboto)',
+  },
+});
+
+theme = createTheme(theme, {
+  cssVariables: true,
   palette: {
     primary: {
       main: '#ef4137',
@@ -9,12 +16,6 @@ let theme = createTheme({
     secondary: {
       main: '#f7931e',
     },
-  },
-});
-
-theme = createTheme(theme, {
-  cssVariables: true,
-  palette: {
     alcohol: theme.palette.augmentColor({
       color: {
         main: '#95A5A6',

@@ -1,14 +1,16 @@
-import './global.css';
-
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 
 import { FeedProvider } from '@digital-www-pwa/feed-provider';
 
-import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
+
+import CssBaseline from '@mui/material/CssBaseline';
+import Container from '@mui/material/Container';
+
 import { Roboto } from 'next/font/google';
 
 import AppBar from '../components/AppBar';
+import FavoritesContextProvider from '../components/FavoritesContextProvider';
 
 const roboto = Roboto({
   weight: ['300', '400', '500', '700'],
@@ -34,10 +36,18 @@ export default function RootLayout({
     <html lang="en">
       <body className={roboto.variable}>
         <AppRouterCacheProvider>
+          <CssBaseline />
           <ThemeProvider theme={theme}>
             <FeedProvider>
-              <AppBar />
-              {children}
+              <FavoritesContextProvider>
+                <AppBar />
+                <Container
+                  maxwidth="xs"
+                  sx={{ paddingTop: 2, paddingBottom: 2 }}
+                >
+                  {children}
+                </Container>
+              </FavoritesContextProvider>
             </FeedProvider>
           </ThemeProvider>
         </AppRouterCacheProvider>
