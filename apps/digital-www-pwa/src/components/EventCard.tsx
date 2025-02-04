@@ -21,7 +21,7 @@ function EventCard({ eventTime }) {
       <Card>
         <CardActionArea
           component={Link}
-          href={`/event/${eventTime.event_time_id}`}
+          href={`/events/${eventTime.event_time_id}`}
         >
           <CardHeader
             title={eventTime.event.title}
