@@ -12,6 +12,7 @@ import { Roboto } from 'next/font/google';
 import AppBar from '../components/AppBar';
 import FavoritesContextProvider from '../components/FavoritesContextProvider';
 import ProcessedDataContextProvider from '../components/ProcessedDataContextProvider';
+import BackToTopButton from '../components/BackToTopButton';
 
 const roboto = Roboto({
   weight: ['300', '400', '500', '700'],
@@ -49,6 +50,7 @@ export default function RootLayout({
                   >
                     {children}
                   </Container>
+                  <BackToTopButton />
                 </ProcessedDataContextProvider>
               </FavoritesContextProvider>
             </FeedProvider>
