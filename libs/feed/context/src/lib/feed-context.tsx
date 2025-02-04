@@ -3,9 +3,7 @@
 import { Feed } from '@digital-www-pwa/feed-types';
 import { createContext, useContext } from 'react';
 
-export const FeedContext = createContext<Feed>({
-  coalesce: [],
-});
+export const FeedContext = createContext<Feed | null>(null);
 
 export const useFeedContext = () => useContext(FeedContext);
 

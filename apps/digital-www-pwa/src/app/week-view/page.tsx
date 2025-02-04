@@ -10,16 +10,21 @@ import { useMemo } from 'react';
 export default function Page() {
   const feed = useFeedContext();
   const calendarEvents = useMemo(() => {
-    return feed.coalesce.reduce((calendarEvents : CalendarEvent[], feedEvent : Event) => {
-      const newEvents = feedEvent.event_times.map((eventTime : EventTime) => ({
+    if (!feed) {
+      return [];
+    }
+    return feed.coalesce.reduce(
+      (calendarEvents: CalendarEvent[], feedEvent: Event) => {
+        const newEvents = feedEvent.event_times.map((eventTime: EventTime) => ({
           id: eventTime.event_time_id,
           start: dayjs(eventTime.starting).toDate(),
           end: dayjs(eventTime.ending).toDate(),
           title: feedEvent.title,
-        }
-      ));
-      return [...calendarEvents, ...newEvents];
-    }, []);
+        }));
+        return [...calendarEvents, ...newEvents];
+      },
+      [],
+    );
   }, [feed]);
 
   return (
@@ -33,7 +38,7 @@ export default function Page() {
       </header>
       <main>
         <AgendaView
-           dates={[
+          dates={[
             '2024-07-17',
             '2024-07-18',
             '2024-07-19',

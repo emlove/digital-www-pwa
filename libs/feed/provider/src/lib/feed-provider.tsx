@@ -5,9 +5,7 @@ import { Feed } from '@digital-www-pwa/feed-types';
 import { ReactNode, useEffect, useState } from 'react';
 
 export const FeedProvider = ({ children }: { children: ReactNode }) => {
-  const [feed, setFeed] = useState<Feed>({
-    coalesce: [],
-  });
+  const [feed, setFeed] = useState<Feed | null>(null);
 
   useEffect(() => {
     async function fetchFeed() {
@@ -17,10 +15,6 @@ export const FeedProvider = ({ children }: { children: ReactNode }) => {
     }
     fetchFeed();
   }, []);
-
-  if (!feed) {
-    return <div>Reticulating splines ...</div>;
-  }
 
   return <FeedContext.Provider value={feed}>{children}</FeedContext.Provider>;
 };

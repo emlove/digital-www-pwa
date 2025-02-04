@@ -11,6 +11,7 @@ import { Roboto } from 'next/font/google';
 
 import AppBar from '../components/AppBar';
 import FavoritesContextProvider from '../components/FavoritesContextProvider';
+import ProcessedDataContextProvider from '../components/ProcessedDataContextProvider';
 
 const roboto = Roboto({
   weight: ['300', '400', '500', '700'],
@@ -40,13 +41,15 @@ export default function RootLayout({
           <ThemeProvider theme={theme}>
             <FeedProvider>
               <FavoritesContextProvider>
-                <AppBar />
-                <Container
-                  maxwidth="xs"
-                  sx={{ paddingTop: 2, paddingBottom: 2 }}
-                >
-                  {children}
-                </Container>
+                <ProcessedDataContextProvider>
+                  <AppBar />
+                  <Container
+                    maxwidth="xs"
+                    sx={{ paddingTop: 2, paddingBottom: 2 }}
+                  >
+                    {children}
+                  </Container>
+                </ProcessedDataContextProvider>
               </FavoritesContextProvider>
             </FeedProvider>
           </ThemeProvider>

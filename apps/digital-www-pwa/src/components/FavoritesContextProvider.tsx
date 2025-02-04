@@ -6,6 +6,9 @@ import { INITIAL_DATA, FavoritesContext } from '../contexts/favorites';
 function FavoritesContextProvider({ children }) {
   const [eventTimeIds, setEventTimeIds] = useState(() => {
     try {
+      if (typeof localStorage === 'undefined') {
+        return new Set();
+      }
       const storedIds = JSON.parse(
         localStorage.getItem('favoriteEventTimeIds'),
       );
