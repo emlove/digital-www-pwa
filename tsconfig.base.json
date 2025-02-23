@@ -37,7 +37,8 @@
       "@digital-www-pwa/top-nav-provider": [
         "libs/top-nav/provider/src/index.ts"
       ],
-      "@digital-www-pwa/top-nav-types": ["libs/top-nav/types/src/index.ts"]
+      "@digital-www-pwa/top-nav-types": ["libs/top-nav/types/src/index.ts"],
+      "@digital-www-pwa/utils": ["libs/utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
