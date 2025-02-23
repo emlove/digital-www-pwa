@@ -1,3 +1,4 @@
+'use client';
 import type { TopNavState } from '@digital-www-pwa/types';
 import { createContext, useContext, useState } from 'react';
 

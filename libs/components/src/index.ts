@@ -2,3 +2,4 @@
 
 export * from './lib/AgendaView';
 export * from './lib/Link';
+export * from './lib/TopNav';

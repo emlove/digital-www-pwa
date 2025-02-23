@@ -1,7 +1,7 @@
 'use client';
+import { TopNavComponent } from '@digital-www-pwa/components';
 import './global.css';
 import { FeedProvider, TopNavProvider } from '@digital-www-pwa/providers';
-import { TopNavComponent } from '@digital-www-pwa/top-nav-component';
 
 export default function RootLayout({
   children,

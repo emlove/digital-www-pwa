@@ -1,3 +1,4 @@
+'use client';
 import type { CalendarEvent } from '@digital-www-pwa/types';
 import dayjs from 'dayjs';
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter.js';

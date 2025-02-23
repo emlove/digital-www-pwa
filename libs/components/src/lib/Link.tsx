@@ -1,3 +1,4 @@
+'use client';
 import { useTopNavContext } from '@digital-www-pwa/providers';
 import { useRouter } from 'next/navigation';
 
