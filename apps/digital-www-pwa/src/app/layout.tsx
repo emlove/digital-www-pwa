@@ -1,3 +1,4 @@
+'use client';
 import './global.css';
 
 import { FeedProvider } from '@digital-www-pwa/feed-provider';
