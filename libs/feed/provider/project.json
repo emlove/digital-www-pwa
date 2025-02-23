@@ -1,9 +1,0 @@
-{
-  "name": "feed-provider",
-  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/feed/provider/src",
-  "projectType": "library",
-  "tags": [],
-  "// targets": "to see all targets run: nx show project feed-provider --web",
-  "targets": {}
-}

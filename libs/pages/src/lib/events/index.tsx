@@ -1,5 +1,6 @@
 'use client';
-import { useFeedContext } from '@digital-www-pwa/feed-context';
+
+import { useFeedContext } from '@digital-www-pwa/providers';
 
 export function EventsPage() {
   const feed = useFeedContext();

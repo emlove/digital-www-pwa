@@ -1,8 +1,18 @@
 'use client';
+import type { Feed } from '@digital-www-pwa/types';
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 
-import { FeedContext } from '@digital-www-pwa/feed-context';
-import { Feed } from '@digital-www-pwa/feed-types';
-import { ReactNode, useEffect, useState } from 'react';
+export const FeedContext = createContext<Feed>({
+  coalesce: [],
+});
+
+export const useFeedContext = () => useContext(FeedContext);
 
 export const FeedProvider = ({ children }: { children: ReactNode }) => {
   const [feed, setFeed] = useState<Feed>({
@@ -24,5 +34,3 @@ export const FeedProvider = ({ children }: { children: ReactNode }) => {
 
   return <FeedContext.Provider value={feed}>{children}</FeedContext.Provider>;
 };
-
-export default FeedProvider;
