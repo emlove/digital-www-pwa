@@ -1,6 +1,11 @@
 import { useTopNavContext } from '@digital-www-pwa/providers';
-import { LinkProps } from '@digital-www-pwa/types';
 import { useRouter } from 'next/navigation';
+
+interface LinkProps {
+  to: string;
+  className?: string;
+  children: React.ReactNode;
+}
 
 export function Link({ to, className, children }: LinkProps) {
   const router = useRouter();
