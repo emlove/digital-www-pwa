@@ -28,6 +28,7 @@
       "@digital-www-pwa/page-agenda-view": [
         "libs/page/agenda-view/src/index.ts"
       ],
+      "@digital-www-pwa/pages": ["libs/pages/src/index.ts"],
       "@digital-www-pwa/top-nav-component": [
         "libs/top-nav/component/src/index.ts"
       ],
