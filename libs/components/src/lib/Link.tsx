@@ -1,6 +1,5 @@
-'use client';
-import { LinkProps } from '@digital-www-pwa/link-types';
 import { useTopNavContext } from '@digital-www-pwa/providers';
+import { LinkProps } from '@digital-www-pwa/types';
 import { useRouter } from 'next/navigation';
 
 export function Link({ to, className, children }: LinkProps) {
@@ -20,5 +19,3 @@ export function Link({ to, className, children }: LinkProps) {
     </a>
   );
 }
-
-export default Link;

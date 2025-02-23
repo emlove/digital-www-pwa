@@ -1,4 +1,4 @@
-import { Link } from '@digital-www-pwa/link-component';
+import { Link } from '@digital-www-pwa/components';
 import {
   Disclosure,
   DisclosureButton,
