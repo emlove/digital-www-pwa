@@ -15,24 +15,11 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@digital-www-pwa/page-agenda-view": ["libs/page/agenda-view/src/index.ts"],
-      "@digital-www-pwa/event-types": ["libs/event/types/src/index.ts"],
-      "@digital-www-pwa/feed-context": ["libs/feed/context/src/index.ts"],
-      "@digital-www-pwa/feed-provider": ["libs/feed/provider/src/index.ts"],
-      "@digital-www-pwa/feed-types": ["libs/feed/types/src/index.ts"],
-      "@digital-www-pwa/link-component": ["libs/link/component/src/index.ts"],
-      "@digital-www-pwa/link-component/server": [
-        "libs/link/component/src/server.ts"
-      ],
-      "@digital-www-pwa/link-types": ["libs/link/types/src/index.ts"],
-      "@digital-www-pwa/top-nav-component": [
-        "libs/top-nav/component/src/index.ts"
-      ],
-      "@digital-www-pwa/top-nav-context": ["libs/top-nav/context/src/index.ts"],
-      "@digital-www-pwa/top-nav-provider": [
-        "libs/top-nav/provider/src/index.ts"
-      ],
-      "@digital-www-pwa/top-nav-types": ["libs/top-nav/types/src/index.ts"]
+      "@digital-www-pwa/components": ["libs/components/src/index.ts"],
+      "@digital-www-pwa/pages": ["libs/pages/src/index.ts"],
+      "@digital-www-pwa/providers": ["libs/providers/src/index.ts"],
+      "@digital-www-pwa/types": ["libs/types/src/index.ts"],
+      "@digital-www-pwa/utils": ["libs/utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
