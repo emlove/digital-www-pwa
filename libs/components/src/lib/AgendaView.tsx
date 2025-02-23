@@ -1,8 +1,8 @@
+import type { CalendarEvent } from '@digital-www-pwa/types';
 import dayjs from 'dayjs';
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter.js';
 import isSameOrBefore from 'dayjs/plugin/isSameOrBefore.js';
 import minMax from 'dayjs/plugin/minMax.js';
-import { Route } from 'next';
 import { useCallback } from 'react';
 import { twMerge } from 'tailwind-merge';
 
@@ -198,14 +198,6 @@ const rowSpanClasses = {
   47: 'row-end-[span_47]',
 } as const;
 
-export type CalendarEvent = {
-  id: number;
-  start: Date;
-  end: Date;
-  title: string;
-  isSecondary?: boolean;
-};
-
 type Props = {
   dates: `${number}${number}${number}${number}-${number}${number}-${number}${number}`[];
   events: CalendarEvent[];
@@ -227,10 +219,10 @@ export function AgendaView(props: Props) {
   const getEventClassNames = useCallback(
     (event: (typeof events)[number]) => {
       const previousMultiDayEvents = events.filter(
-        ({ isMultiDay }, index) => isMultiDay && index < events.indexOf(event),
+        ({ isMultiDay }, index) => isMultiDay && index < events.indexOf(event)
       );
       const previousNonMultiDayEvents = events.filter(
-        ({ isMultiDay }, index) => !isMultiDay && index < events.indexOf(event),
+        ({ isMultiDay }, index) => !isMultiDay && index < events.indexOf(event)
       );
       const isOverlappingNonMultiDay =
         !event.isMultiDay &&
@@ -242,7 +234,7 @@ export function AgendaView(props: Props) {
                 event.end.isAfter(dayjs(otherAppointment.start)))
             );
           },
-          false,
+          false
         );
 
       // Disallow negative index (if date outside of range, the
@@ -250,8 +242,8 @@ export function AgendaView(props: Props) {
       const dateIndex = Math.max(
         0,
         props.dates.findIndex((date) =>
-          date.startsWith(event.start.format('YYYY-MM-DD')),
-        ),
+          date.startsWith(event.start.format('YYYY-MM-DD'))
+        )
       );
 
       return twMerge(
@@ -265,8 +257,8 @@ export function AgendaView(props: Props) {
               props.dates.length - dateIndex,
               event.end.diff(
                 dayjs.max(event.start, dayjs(props.dates[0])),
-                'days',
-              ),
+                'days'
+              )
             ) as keyof typeof colSpanClasses
           ],
         rowStartClasses[
@@ -281,21 +273,27 @@ export function AgendaView(props: Props) {
                 }
                 return rowStart;
               }, 1)
-            : Math.floor(dayjs(event.start).diff(dayjs(event.start).startOf('day'), 'minute') / 30)) as keyof typeof rowStartClasses
+            : Math.floor(
+                dayjs(event.start).diff(
+                  dayjs(event.start).startOf('day'),
+                  'minute'
+                ) / 30
+              )) as keyof typeof rowStartClasses
         ],
         !event.isMultiDay &&
           rowSpanClasses[
-            Math.ceil(event.end.diff(event.start, 'minute') /
-              30) as keyof typeof rowSpanClasses
+            Math.ceil(
+              event.end.diff(event.start, 'minute') / 30
+            ) as keyof typeof rowSpanClasses
           ],
         !event.isSecondary
           ? 'bg-slate-800 text-white hover:bg-indigo-900'
           : 'bg-slate-300 text-darkNavyBlue hover:bg-slate-200',
         isOverlappingNonMultiDay &&
-          'w-[75%] ml-[25%] border border-white text-right z-20 hover:z-30',
+          'w-[75%] ml-[25%] border border-white text-right z-20 hover:z-30'
       );
     },
-    [props.dates, events, timeSlotColCount],
+    [props.dates, events, timeSlotColCount]
   );
 
   return (
@@ -309,7 +307,7 @@ export function AgendaView(props: Props) {
                 'text-darkGray col-span-1 p-2 text-center text-[13px] text-xs',
                 colStartClasses[
                   (timeSlotColCount + index) as keyof typeof colStartClasses
-                ],
+                ]
               )}
             >
               {dayjs(date).format('dddd')}
@@ -330,7 +328,7 @@ export function AgendaView(props: Props) {
                   dayjs(props.dates[props.dates.length - 1])
                     .add(1, 'day')
                     .startOf('day')
-                    .isBefore(event.end) && 'rounded-r-none ',
+                    .isBefore(event.end) && 'rounded-r-none '
                 )}
               >
                 {event.title}
@@ -346,7 +344,7 @@ export function AgendaView(props: Props) {
               key={`time-slot-${time}`}
               className={twMerge(
                 rowStartClasses[index as keyof typeof rowStartClasses],
-                'text-darkGray translate-y-[-16px] text-xs leading-[30px]',
+                'text-darkGray translate-y-[-16px] text-xs leading-[30px]'
               )}
             >
               {time.endsWith('30') ? <>&nbsp;</> : time}

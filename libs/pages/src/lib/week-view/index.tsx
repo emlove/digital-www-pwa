@@ -1,7 +1,7 @@
 'use client';
-import { AgendaView, CalendarEvent } from '@digital-www-pwa/page-agenda-view';
+import { AgendaView } from '@digital-www-pwa/components';
 import { useFeedContext } from '@digital-www-pwa/providers';
-import { Event, EventTime } from '@digital-www-pwa/types';
+import type { CalendarEvent, Event, EventTime } from '@digital-www-pwa/types';
 import { getMergedEventTimes } from '@digital-www-pwa/utils';
 import dayjs from 'dayjs';
 import { useMemo } from 'react';

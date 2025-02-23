@@ -1,4 +1,4 @@
-import { Event, EventTime } from '@digital-www-pwa/types';
+import type { Event, EventTime } from '@digital-www-pwa/types';
 
 /**
  * For multi-day all-day events, the API returns contiguous event times, one

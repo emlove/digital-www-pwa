@@ -21,9 +21,6 @@
         "libs/link/component/src/server.ts"
       ],
       "@digital-www-pwa/link-types": ["libs/link/types/src/index.ts"],
-      "@digital-www-pwa/page-agenda-view": [
-        "libs/page/agenda-view/src/index.ts"
-      ],
       "@digital-www-pwa/pages": ["libs/pages/src/index.ts"],
       "@digital-www-pwa/providers": ["libs/providers/src/index.ts"],
       "@digital-www-pwa/top-nav-component": [
