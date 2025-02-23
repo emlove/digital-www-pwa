@@ -16,7 +16,6 @@
     "baseUrl": ".",
     "paths": {
       "@digital-www-pwa/components": ["libs/components/src/index.ts"],
-      "@digital-www-pwa/event-types": ["libs/event/types/src/index.ts"],
       "@digital-www-pwa/link-component": ["libs/link/component/src/index.ts"],
       "@digital-www-pwa/link-component/server": [
         "libs/link/component/src/server.ts"
