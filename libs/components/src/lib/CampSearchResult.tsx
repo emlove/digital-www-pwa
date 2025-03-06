@@ -1,33 +1,27 @@
 'use client';
 import lunr from 'lunr';
-import type {
-  ProcessedEventItem,
-  Highlight,
-  LunrPosition,
-} from '@digital-www-pwa/types';
+import type { CampItem, Highlight, LunrPosition } from '@digital-www-pwa/types';
 import { useMemo } from 'react';
-import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import Link from 'next/link';
 
-import EventIcon from '@mui/icons-material/Event';
+import FestivalIcon from '@mui/icons-material/Festival';
 
 import { HighlightedText } from './HighlightedText';
 
-export function EventSearchResult({
+export function CampSearchResult({
   result,
-  event,
+  camp,
 }: {
   result: lunr.Index.Result;
-  event: ProcessedEventItem;
+  camp: CampItem;
 }) {
-  const titleHighlights = useMemo(
+  const nameHighlights = useMemo(
     () =>
       Object.values(result.matchData.metadata).reduce(
         (highlights: Highlight[], metadata) => {
-          if (metadata.title) {
-            metadata.title.position.forEach((pos: LunrPosition) => {
+          if (metadata.name) {
+            metadata.name.position.forEach((pos: LunrPosition) => {
               highlights.push({
                 start: pos[0],
                 end: pos[0] + pos[1],
@@ -44,11 +38,11 @@ export function EventSearchResult({
   return (
     <>
       <ListItemIcon>
-        <EventIcon />
+        <FestivalIcon />
       </ListItemIcon>
       <ListItemText
         primary={
-          <HighlightedText text={event.title} highlights={titleHighlights} />
+          <HighlightedText text={camp.name} highlights={nameHighlights} />
         }
       />
     </>

@@ -1,6 +1,12 @@
 'use client';
 import lunr from 'lunr';
-import { useEventsIndex } from '@digital-www-pwa/providers';
+import {
+  useEventsIndex,
+  useArtIndex,
+  useCampsIndex,
+  useRadioIndex,
+  useVehiclesIndex,
+} from '@digital-www-pwa/providers';
 import Box from '@mui/material/Box';
 import InputBase from '@mui/material/InputBase';
 import Popper from '@mui/material/Popper';
@@ -20,7 +26,15 @@ export function SearchBar() {
   const [resultsOpen, setResultsOpen] = useState<boolean>(false);
   const [searchText, setSearchText] = useState<string>('');
   const [eventResults, setEventResults] = useState<lunr.Index.Result[]>([]);
+  const [artResults, setArtResults] = useState<lunr.Index.Result[]>([]);
+  const [campResults, setCampResults] = useState<lunr.Index.Result[]>([]);
+  const [radioResults, setRadioResults] = useState<lunr.Index.Result[]>([]);
+  const [vehicleResults, setVehicleResults] = useState<lunr.Index.Result[]>([]);
   const eventsIndex = useEventsIndex();
+  const artIndex = useArtIndex();
+  const campsIndex = useCampsIndex();
+  const radioIndex = useRadioIndex();
+  const vehiclesIndex = useVehiclesIndex();
   const theme = useTheme();
 
   useEffect(() => {
@@ -30,6 +44,38 @@ export function SearchBar() {
       setEventResults([]);
     }
   }, [eventsIndex, searchText]);
+
+  useEffect(() => {
+    if (artIndex && searchText !== '') {
+      setArtResults(artIndex.search(searchText));
+    } else {
+      setArtResults([]);
+    }
+  }, [artIndex, searchText]);
+
+  useEffect(() => {
+    if (campsIndex && searchText !== '') {
+      setCampResults(campsIndex.search(searchText));
+    } else {
+      setCampResults([]);
+    }
+  }, [campsIndex, searchText]);
+
+  useEffect(() => {
+    if (radioIndex && searchText !== '') {
+      setRadioResults(radioIndex.search(searchText));
+    } else {
+      setRadioResults([]);
+    }
+  }, [radioIndex, searchText]);
+
+  useEffect(() => {
+    if (vehiclesIndex && searchText !== '') {
+      setVehicleResults(vehiclesIndex.search(searchText));
+    } else {
+      setVehicleResults([]);
+    }
+  }, [vehiclesIndex, searchText]);
 
   useEffect(() => {
     if (searchText !== '') {
@@ -57,9 +103,9 @@ export function SearchBar() {
         sx={{
           position: 'relative',
           borderRadius: theme.shape.borderRadius,
-          backgroundColor: alpha(theme.palette.common.white, 0.15),
+          backgroundColor: alpha(theme.palette.text.primary, 0.15),
           '&:hover': {
-            backgroundColor: alpha(theme.palette.common.white, 0.25),
+            backgroundColor: alpha(theme.palette.text.primary, 0.25),
           },
           marginLeft: 0,
           paddingRight: theme.spacing(4),
@@ -125,6 +171,10 @@ export function SearchBar() {
             <Paper>
               <SearchResults
                 eventResults={eventResults}
+                artResults={artResults}
+                campResults={campResults}
+                radioResults={radioResults}
+                vehicleResults={vehicleResults}
                 onClick={handleClose}
               />
             </Paper>

@@ -1,26 +1,20 @@
 'use client';
 import lunr from 'lunr';
-import type {
-  ProcessedEventItem,
-  Highlight,
-  LunrPosition,
-} from '@digital-www-pwa/types';
+import type { ArtItem, Highlight, LunrPosition } from '@digital-www-pwa/types';
 import { useMemo } from 'react';
-import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import Link from 'next/link';
 
-import EventIcon from '@mui/icons-material/Event';
+import PaletteIcon from '@mui/icons-material/Palette';
 
 import { HighlightedText } from './HighlightedText';
 
-export function EventSearchResult({
+export function ArtSearchResult({
   result,
-  event,
+  art,
 }: {
   result: lunr.Index.Result;
-  event: ProcessedEventItem;
+  art: ArtItem;
 }) {
   const titleHighlights = useMemo(
     () =>
@@ -44,11 +38,11 @@ export function EventSearchResult({
   return (
     <>
       <ListItemIcon>
-        <EventIcon />
+        <PaletteIcon />
       </ListItemIcon>
       <ListItemText
         primary={
-          <HighlightedText text={event.title} highlights={titleHighlights} />
+          <HighlightedText text={art.title} highlights={titleHighlights} />
         }
       />
     </>

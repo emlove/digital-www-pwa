@@ -1,26 +1,24 @@
 'use client';
 import lunr from 'lunr';
 import type {
-  ProcessedEventItem,
+  VehicleItem,
   Highlight,
   LunrPosition,
 } from '@digital-www-pwa/types';
 import { useMemo } from 'react';
-import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import Link from 'next/link';
 
-import EventIcon from '@mui/icons-material/Event';
+import DriveEtaIcon from '@mui/icons-material/DriveEta';
 
 import { HighlightedText } from './HighlightedText';
 
-export function EventSearchResult({
+export function VehicleSearchResult({
   result,
-  event,
+  vehicle,
 }: {
   result: lunr.Index.Result;
-  event: ProcessedEventItem;
+  vehicle: VehicleItem;
 }) {
   const titleHighlights = useMemo(
     () =>
@@ -44,11 +42,11 @@ export function EventSearchResult({
   return (
     <>
       <ListItemIcon>
-        <EventIcon />
+        <DriveEtaIcon />
       </ListItemIcon>
       <ListItemText
         primary={
-          <HighlightedText text={event.title} highlights={titleHighlights} />
+          <HighlightedText text={vehicle.title} highlights={titleHighlights} />
         }
       />
     </>
