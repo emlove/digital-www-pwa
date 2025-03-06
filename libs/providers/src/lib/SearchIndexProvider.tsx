@@ -12,11 +12,11 @@ import {
 } from './ProcessedDataProvider';
 
 const INITIAL_DATA: SearchIndexContextProps = {
-  events: lunr(function () {}),
-  art: lunr(function () {}),
-  camps: lunr(function () {}),
-  radio: lunr(function () {}),
-  vehicles: lunr(function () {}),
+  events: lunr(function () {}), // eslint-disable-line @typescript-eslint/no-empty-function
+  art: lunr(function () {}), // eslint-disable-line @typescript-eslint/no-empty-function
+  camps: lunr(function () {}), // eslint-disable-line @typescript-eslint/no-empty-function
+  radio: lunr(function () {}), // eslint-disable-line @typescript-eslint/no-empty-function
+  vehicles: lunr(function () {}), // eslint-disable-line @typescript-eslint/no-empty-function
 };
 
 export const SearchIndexContext =
