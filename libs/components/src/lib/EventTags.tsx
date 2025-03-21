@@ -18,10 +18,7 @@ export function EventTags({ event }: { event?: ProcessedEventItem }) {
         const IconComponent = tag.icon;
         return (
           <Grid key={tag.slug}>
-            <Chip
-              icon={<IconComponent />}
-              label={tag.name} /* color={tag.slug} */
-            />
+            <Chip icon={<IconComponent />} label={tag.name} color={tag.slug} />
           </Grid>
         );
       })}

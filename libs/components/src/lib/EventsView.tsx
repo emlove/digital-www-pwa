@@ -193,7 +193,7 @@ export function EventsView({ favoritesOnly }: { favoritesOnly: boolean }) {
                 variant={filters[tag.slug] ? 'filled' : 'outlined'}
                 icon={<IconComponent />}
                 label={tag.name}
-                // color={tag.slug}
+                color={tag.slug}
               />
             </Grid>
           );
