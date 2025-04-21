@@ -8,6 +8,7 @@ import LightbulbIcon from '@mui/icons-material/Lightbulb';
 import LocalBarIcon from '@mui/icons-material/LocalBar';
 import LocalDiningIcon from '@mui/icons-material/LocalDining';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
+import MapIcon from '@mui/icons-material/Map';
 import NoDrinksIcon from '@mui/icons-material/NoDrinks';
 import PaletteIcon from '@mui/icons-material/Palette';
 import RadioIcon from '@mui/icons-material/Radio';
@@ -16,6 +17,11 @@ import TheaterComedyIcon from '@mui/icons-material/TheaterComedy';
 export const MAX_DESCRIPTION_LENGTH = 200;
 
 export const NAVIGATION_LINKS = [
+  {
+    title: 'Map',
+    path: '/map',
+    icon: MapIcon,
+  },
   {
     title: 'Events',
     path: '/events',

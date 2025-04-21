@@ -1509,6 +1509,7 @@ __metadata:
     prettier: "npm:^2.6.2"
     react: "npm:18.3.1"
     react-dom: "npm:18.3.1"
+    react-zoom-pan-pinch: "npm:^3.7.0"
     tailwind-merge: "npm:^2.6.0"
     ts-jest: "npm:^29.1.0"
     ts-node: "npm:10.9.1"
@@ -12959,6 +12960,16 @@ __metadata:
     react: ">=16.6.0"
     react-dom: ">=16.6.0"
   checksum: 10c0/2ba754ba748faefa15f87c96dfa700d5525054a0141de8c75763aae6734af0740e77e11261a1e8f4ffc08fd9ab78510122e05c21c2d79066c38bb6861a886c82
+  languageName: node
+  linkType: hard
+
+"react-zoom-pan-pinch@npm:^3.7.0":
+  version: 3.7.0
+  resolution: "react-zoom-pan-pinch@npm:3.7.0"
+  peerDependencies:
+    react: "*"
+    react-dom: "*"
+  checksum: 10c0/96889849800a953128fe7f9e42bed0d5cbc48d03024995b136f5e972146236688efb24d7381d8e6f09598f5512b4897d2420f62d828a665fdf24b745b7d55911
   languageName: node
   linkType: hard
 
