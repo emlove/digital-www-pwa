@@ -9,12 +9,14 @@ import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import FilterAltOffIcon from '@mui/icons-material/FilterAltOff';
 import { Chip } from '@mui/material';
+import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Collapse from '@mui/material/Collapse';
 import Grid from '@mui/material/Grid2';
 import IconButton from '@mui/material/IconButton';
 import Skeleton from '@mui/material/Skeleton';
 import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
 import { useEffect, useMemo, useState } from 'react';
 
 import { EventCard } from './EventCard';
@@ -82,7 +84,6 @@ export function EventsView({ favoritesOnly }: { favoritesOnly: boolean }) {
   const filteredEventTimes = useMemo(() => {
     const preFilteredEventTimes = sortedEventTimes?.filter(
       (eventTime) =>
-        eventTime.day_of_week === selectedDay &&
         (!favoritesOnly || favoriteEventTimeIds.has(eventTime.event_time_id))
     );
     const selectedTagSlugs = TAGS.reduce((acc, tag) => {
@@ -148,7 +149,7 @@ export function EventsView({ favoritesOnly }: { favoritesOnly: boolean }) {
     return <EventCard key={eventTime.event_time_id} eventTime={eventTime} />;
   }
 
-  function renderEvents(allDay = false) {
+  function renderEvents({allDay = false, eventDay} : {allDay: boolean, eventDay: string}) {
     if (!filteredEventTimes) {
       return Array(12)
         .fill(null)
@@ -159,6 +160,9 @@ export function EventsView({ favoritesOnly }: { favoritesOnly: boolean }) {
         ));
     }
     return filteredEventTimes.map((eventTime) => {
+      if (eventDay && eventTime.day_of_week !== eventDay) {
+        return null;
+      }
       if (allDay !== eventTime.all_day) {
         return null;
       }
@@ -175,6 +179,11 @@ export function EventsView({ favoritesOnly }: { favoritesOnly: boolean }) {
               aria-label="Remove filters"
               size="large"
               onClick={handleRemoveFilters}
+              sx={{
+                "@media print": {
+                  display: 'none',
+                }
+              }}
             >
               <FilterAltOffIcon />
             </IconButton>
@@ -194,6 +203,11 @@ export function EventsView({ favoritesOnly }: { favoritesOnly: boolean }) {
                 icon={<IconComponent />}
                 label={tag.name}
                 color={tag.slug}
+                sx={{
+                  "@media print": {
+                    display: 'none',
+                  }
+                }}
               />
             </Grid>
           );
@@ -203,35 +217,67 @@ export function EventsView({ favoritesOnly }: { favoritesOnly: boolean }) {
         selectedDay={selectedDay}
         setSelectedDay={setSelectedDay}
         id="select-day-tab-bar"
+        sx={{
+          "@media print": {
+            display: 'none',
+          }
+        }}
       />
-      {filteredEventTimes?.some((e) => e.all_day) ? (
-        <Stack direction="column-reverse">
-          <Collapse in={showAllDayEvents}>
-            <Grid container spacing={2} padding={2}>
-              {renderEvents(true)}
-            </Grid>
-          </Collapse>
-          <Button
-            sx={{
-              margin: 2,
-              padding: 1,
-              position: 'sticky',
-              top: (theme) => theme.spacing(9),
-              display: 'flex',
-              backgroundColor: 'white',
-            }}
-            variant="outlined"
-            color="primary"
-            onClick={handleToggleAllDayEvents}
-            endIcon={showAllDayEvents ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-          >
-            {showAllDayEvents ? 'Hide ' : 'Show '}All Day Events
-          </Button>
-        </Stack>
-      ) : null}
-      <Grid container spacing={2} padding={2}>
-        {renderEvents(false)}
-      </Grid>
+      {EVENT_DAYS.map((day) => {
+        const eventTimesForDay = filteredEventTimes?.filter((eventTime) => eventTime.day_of_week === day && (showAllDayEvents || !eventTime.all_day));
+        if (!eventTimesForDay?.length) {
+          return null;
+        }
+        return <Box
+          sx={{
+            display: day === selectedDay ? 'initial' : 'none',
+            "@media print": {
+              display: 'initial',
+            }
+          }}
+        >
+          <Typography sx={{
+            typography: { sm: 'h2', xs: 'h4' },
+            display: 'none',
+            "@media print": {
+              display: 'initial',
+            }
+          }}>
+            {day}
+          </Typography>
+          {eventTimesForDay?.some((e) => e.all_day) ? (
+            <Stack direction="column-reverse">
+              <Collapse in={showAllDayEvents}>
+                <Grid container spacing={2} padding={2}>
+                  {renderEvents({allDay: true, eventDay: day})}
+                </Grid>
+              </Collapse>
+              <Button
+                sx={{
+                  margin: 2,
+                  padding: 1,
+                  position: 'sticky',
+                  top: (theme) => theme.spacing(9),
+                  display: 'flex',
+                  backgroundColor: 'white',
+                  "@media print": {
+                    display: 'none',
+                  }
+                }}
+                variant="outlined"
+                color="primary"
+                onClick={handleToggleAllDayEvents}
+                endIcon={showAllDayEvents ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+              >
+                {showAllDayEvents ? 'Hide ' : 'Show '}All Day Events
+              </Button>
+            </Stack>
+          ) : null}
+          <Grid container spacing={2} padding={2}>
+            {renderEvents({allDay: false, eventDay: day})}
+          </Grid>
+        </Box>
+      })}
     </>
   );
 }

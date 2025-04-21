@@ -51,6 +51,36 @@ const base = createTheme({
 
 export const theme = createTheme(base, {
   cssVariables: true,
+  components: {
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          "@media print": {
+            boxShadow: 'none',
+            breakInside: 'avoid',
+          }
+        }
+      }
+    },
+    MuiCardHeader: {
+      styleOverrides: {
+        root: {
+          "@media print": {
+            padding: 0,
+          }
+        }
+      }
+    },
+    MuiCardContent: {
+      styleOverrides: {
+        root: {
+          "@media print": {
+            padding: 0,
+          }
+        }
+      }
+    },
+  },
   palette: {
     primary: base.palette.augmentColor({ color: base.palette.primary }),
     secondary: base.palette.augmentColor({ color: base.palette.secondary }),

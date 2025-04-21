@@ -9,6 +9,7 @@ interface SelectDayTabBarProps {
   selectedDay: string;
   setSelectedDay: Dispatch<SetStateAction<string>>;
   id?: string;
+  sx?: object;
 }
 
 export function SelectDayTabBar({
@@ -17,7 +18,13 @@ export function SelectDayTabBar({
   ...props
 }: SelectDayTabBarProps) {
   return (
-    <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+    <Box sx={{
+      borderBottom: 1,
+      borderColor: 'divider',
+      "@media print": {
+        border: 'none',
+      }
+    }}>
       <Tabs
         value={selectedDay}
         onChange={(e, newValue) => setSelectedDay(newValue)}

@@ -11,7 +11,13 @@ export function Header({ children, button, ...props }: HeaderProps) {
   return (
     <Stack direction="row">
       <Typography
-        sx={{ typography: { sm: 'h1', xs: 'h3' }, flexGrow: 1 }}
+        sx={{
+          typography: { sm: 'h1', xs: 'h3' },
+          flexGrow: 1,
+          "@media print": {
+            display: 'none',
+          }
+        }}
         component="span"
         {...props}
       >
