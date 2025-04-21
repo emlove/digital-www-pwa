@@ -30,7 +30,7 @@ To run the dev server for your app, run:
 yarn run nx dev digital-www-pwa
 ```
 
-If everything runs correctly, you should be able to view the development app at [http://localhost:3000](http://localhost:3000).
+If everything runs correctly, you should be able to view the development app at [http://localhost:4200](http://localhost:4200).
 
 ## Add new projects
 
