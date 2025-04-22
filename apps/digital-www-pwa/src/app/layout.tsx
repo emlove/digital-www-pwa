@@ -1,5 +1,6 @@
 'use client';
 import { ThemeProvider } from '@mui/material';
+import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
@@ -36,11 +37,13 @@ export default function RootLayout({
               <FavoritesProvider>
                 <ProcessedDataProvider>
                   <SearchIndexProvider>
-                    <AppBar />
-                    <Container sx={{ paddingTop: 2, paddingBottom: 2 }}>
-                      {children}
-                    </Container>
-                    <BackToTopButton />
+                    <Box id="root">
+                      <AppBar />
+                      <Container id="content" sx={{ paddingTop: 2, paddingBottom: 2}}>
+                        {children}
+                        <BackToTopButton />
+                      </Container>
+                    </Box>
                   </SearchIndexProvider>
                 </ProcessedDataProvider>
               </FavoritesProvider>
