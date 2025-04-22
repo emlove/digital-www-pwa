@@ -69,6 +69,9 @@ export function AppBar() {
         position="sticky"
         sx={{
           background: 'linear-gradient(90deg, #eb3a52 0%, #e05855 100%)',
+          "@media print": {
+            display: 'none',
+          }
         }}
       >
         <Container sx={{ padding: 0 }}>

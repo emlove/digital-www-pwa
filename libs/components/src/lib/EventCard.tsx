@@ -43,7 +43,13 @@ export function EventCard({ eventTime }: { eventTime: ParsedEventTime }) {
             <EventTags event={eventTime.event} />
           </CardContent>
         </CardActionArea>
-        <CardActions sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <CardActions sx={{
+          display: 'flex',
+          justifyContent: 'flex-end',
+          "@media print": {
+            display: 'none',
+          }
+        }}>
           <FavoriteButton eventTime={eventTime} />
         </CardActions>
       </Card>
