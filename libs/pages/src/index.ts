@@ -8,6 +8,7 @@ export * from './lib/camps-item';
 export * from './lib/events';
 export * from './lib/events-item';
 export * from './lib/favorites';
+export * from './lib/map';
 export * from './lib/radio';
 export * from './lib/radio-item';
 export * from './lib/vehicles';

@@ -8,14 +8,26 @@ import LightbulbIcon from '@mui/icons-material/Lightbulb';
 import LocalBarIcon from '@mui/icons-material/LocalBar';
 import LocalDiningIcon from '@mui/icons-material/LocalDining';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
+import MapIcon from '@mui/icons-material/Map';
 import NoDrinksIcon from '@mui/icons-material/NoDrinks';
 import PaletteIcon from '@mui/icons-material/Palette';
 import RadioIcon from '@mui/icons-material/Radio';
 import TheaterComedyIcon from '@mui/icons-material/TheaterComedy';
+import dayjs from 'dayjs';
+import timezone from 'dayjs/plugin/timezone';
+import utc from 'dayjs/plugin/utc';
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
 export const MAX_DESCRIPTION_LENGTH = 200;
 
 export const NAVIGATION_LINKS = [
+  {
+    title: 'Map',
+    path: '/map',
+    icon: MapIcon,
+  },
   {
     title: 'Events',
     path: '/events',
@@ -57,6 +69,10 @@ export const EVENT_DAYS = [
 ];
 
 export const EVENT_TIMEZONE = 'America/Detroit';
+dayjs.tz.setDefault(EVENT_TIMEZONE);
+
+export const EVENT_START = dayjs('2025-07-16 10:00:00').tz(EVENT_TIMEZONE, true)
+export const EVENT_END = dayjs('2025-07-20 15:00:00').tz(EVENT_TIMEZONE, true)
 
 export enum Slugs {
   ALCOHOL = 'alcohol',
@@ -105,3 +121,22 @@ export const TAGS: TagItem[] = [
     icon: TheaterComedyIcon,
   },
 ];
+
+export const MAP_LOCATION_ANCHORS = [
+  {
+    latitude: 43.51506239647294,
+    longitude: -86.37410569015964,
+    top: 4.4,
+    left: 19.2,
+  },
+  {
+    latitude: 43.511679315636805,
+    longitude: -86.36456949817166,
+    top: 43.8,
+    left: 84.3,
+  },
+];
+
+export const MAP_ACCURACY_SIZE_FACTOR = 0.30; // %/m
+
+export const POSITION_STALE_TIME = 90; // seconds

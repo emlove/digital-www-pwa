@@ -18,6 +18,8 @@ import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
 import { useState } from 'react';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 import { SearchBar } from '@digital-www-pwa/components';
 
@@ -25,6 +27,8 @@ export function AppBar() {
   const [open, setOpen] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
+  const theme = useTheme();
+  const largeScreen = useMediaQuery(theme.breakpoints.up('md'));
 
   function renderMenuButton() {
     return (
@@ -87,7 +91,7 @@ export function AppBar() {
                 textDecoration: 'none',
               }}
             >
-              Lakes of Fire
+              Lakes of Fire 2025{largeScreen ? ' - Doorways in Time' : ''}
             </Typography>
             <SearchBar />
           </Toolbar>
