@@ -13,6 +13,12 @@ import NoDrinksIcon from '@mui/icons-material/NoDrinks';
 import PaletteIcon from '@mui/icons-material/Palette';
 import RadioIcon from '@mui/icons-material/Radio';
 import TheaterComedyIcon from '@mui/icons-material/TheaterComedy';
+import dayjs from 'dayjs';
+import timezone from 'dayjs/plugin/timezone';
+import utc from 'dayjs/plugin/utc';
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
 export const MAX_DESCRIPTION_LENGTH = 200;
 
@@ -63,6 +69,10 @@ export const EVENT_DAYS = [
 ];
 
 export const EVENT_TIMEZONE = 'America/Detroit';
+dayjs.tz.setDefault(EVENT_TIMEZONE);
+
+export const EVENT_START = dayjs('2025-07-16 10:00:00').tz(EVENT_TIMEZONE, true)
+export const EVENT_END = dayjs('2025-07-20 15:00:00').tz(EVENT_TIMEZONE, true)
 
 export enum Slugs {
   ALCOHOL = 'alcohol',

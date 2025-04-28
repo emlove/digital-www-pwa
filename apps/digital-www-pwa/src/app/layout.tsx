@@ -30,6 +30,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <title>Lakes of Fire 2025 - Doorways in Time</title>
+      </head>
       <body className={roboto.variable}>
         <AppRouterCacheProvider>
           <CssBaseline />
