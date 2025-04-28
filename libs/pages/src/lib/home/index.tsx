@@ -9,6 +9,8 @@ import Grid from '@mui/material/Grid2';
 import MuiLink from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import RouterLink from 'next/link';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const EXTERNAL_LINKS = [
   {
@@ -30,21 +32,24 @@ const EXTERNAL_LINKS = [
 ];
 
 export function HomePage() {
+  const theme = useTheme();
+  const tinyScreen = useMediaQuery(theme.breakpoints.down('xs'));
+
   return (
     <Grid container spacing={2}>
-      <Grid size={{ xs: 12 }} display="flex" justifyContent="center">
+      <Grid size={{ xxs: 12 }} display="flex" justifyContent="center">
         <img src="/logo.png" alt="Lakes of Fire 2025 - Doorways in Time" style={{width: '100%', maxWidth: 320}} />
       </Grid>
-      <Grid padding={2} size={{ xs: 12 }} sx={{
+      <Grid padding={2} size={{ xxs: 12 }} sx={{
         color: 'white',
         background: 'linear-gradient(90deg, #eb3a52 0%, #e05855 100%)',
         textAlign: 'center',
       }}>
-        <Typography variant="h4">{EVENT_START.format('MMMM D')} to {EVENT_END.format('MMMM D YYYY')}</Typography>
+        <Typography variant="h4">{EVENT_START.format('MMMM D')} to {EVENT_END.format(tinyScreen ? 'MMMM D' : 'MMMM D YYYY')}</Typography>
         {dayjs().isBefore(EVENT_START) ? <EventCountdown /> : null}
       </Grid>
       {EXTERNAL_LINKS.map((linkData) => (
-        <Grid key={linkData.url} size={{ xs: 12, md: 6 }}>
+        <Grid key={linkData.url} size={{ xxs: 12, md: 6 }}>
           <Button
             component={MuiLink}
             href={linkData.url}
@@ -62,7 +67,7 @@ export function HomePage() {
       {NAVIGATION_LINKS.map((linkData) => {
         const IconComponent = linkData.icon;
         return (
-          <Grid key={linkData.path} size={{ xs: 12, md: 6, lg: 4 }}>
+          <Grid key={linkData.path} size={{ xxs: 12, md: 6, lg: 4 }}>
             <Button
               component={RouterLink}
               href={linkData.path}
