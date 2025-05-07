@@ -13,12 +13,21 @@ import NoDrinksIcon from '@mui/icons-material/NoDrinks';
 import PaletteIcon from '@mui/icons-material/Palette';
 import RadioIcon from '@mui/icons-material/Radio';
 import TheaterComedyIcon from '@mui/icons-material/TheaterComedy';
+import CampaignIcon from '@mui/icons-material/Campaign';
 import dayjs from 'dayjs';
 import timezone from 'dayjs/plugin/timezone';
 import utc from 'dayjs/plugin/utc';
+import isBetween from 'dayjs/plugin/isBetween';
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
+dayjs.extend(isBetween);
+
+export const EVENT_TIMEZONE = 'America/Detroit';
+dayjs.tz.setDefault(EVENT_TIMEZONE);
+
+export const EVENT_START = dayjs('2025-07-16 10:00:00').tz(EVENT_TIMEZONE, true)
+export const EVENT_END = dayjs('2025-07-20 15:00:00').tz(EVENT_TIMEZONE, true)
 
 export const MAX_DESCRIPTION_LENGTH = 200;
 
@@ -28,6 +37,11 @@ export const NAVIGATION_LINKS = [
     path: '/map',
     icon: MapIcon,
   },
+  dayjs().isBetween(EVENT_START, EVENT_END) ? {
+    title: 'Happening Now',
+    path: '/now',
+    icon: CampaignIcon,
+  } : null,
   {
     title: 'Events',
     path: '/events',
@@ -58,7 +72,7 @@ export const NAVIGATION_LINKS = [
     path: '/vehicles',
     icon: DriveEtaIcon,
   },
-];
+].filter((link) => link !== null);
 
 export const EVENT_DAYS = [
   'Wednesday',
@@ -67,12 +81,6 @@ export const EVENT_DAYS = [
   'Saturday',
   'Sunday',
 ];
-
-export const EVENT_TIMEZONE = 'America/Detroit';
-dayjs.tz.setDefault(EVENT_TIMEZONE);
-
-export const EVENT_START = dayjs('2025-07-16 10:00:00').tz(EVENT_TIMEZONE, true)
-export const EVENT_END = dayjs('2025-07-20 15:00:00').tz(EVENT_TIMEZONE, true)
 
 export enum Slugs {
   ALCOHOL = 'alcohol',

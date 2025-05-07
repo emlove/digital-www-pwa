@@ -1,14 +1,13 @@
 'use client';
 import { NAVIGATION_LINKS, EVENT_START, EVENT_END } from '@digital-www-pwa/utils';
 import dayjs from 'dayjs';
-import { EventCountdown } from '@digital-www-pwa/components';
+import { EventCountdown, NavigationButton } from '@digital-www-pwa/components';
 import LaunchIcon from '@mui/icons-material/Launch';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid2';
 import MuiLink from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
-import RouterLink from 'next/link';
 
 const EXTERNAL_LINKS = [
   {
@@ -59,22 +58,11 @@ export function HomePage() {
         </Grid>
       ))}
       <Divider sx={{ width: '100%' }} />
-      {NAVIGATION_LINKS.map((linkData) => {
-        const IconComponent = linkData.icon;
-        return (
-          <Grid key={linkData.path} size={{ xs: 12, md: 6, lg: 4 }}>
-            <Button
-              component={RouterLink}
-              href={linkData.path}
-              sx={{ width: '100%', height: '100%', padding: 2 }}
-              variant="contained"
-              startIcon={<IconComponent />}
-            >
-              {linkData.title}
-            </Button>
-          </Grid>
-        );
-      })}
+      {NAVIGATION_LINKS.map((linkData) => (
+        <Grid key={linkData.path} size={{ xs: 12, md: 6, lg: 4 }}>
+          <NavigationButton linkData={linkData} />
+        </Grid>
+      ))}
     </Grid>
   );
 }

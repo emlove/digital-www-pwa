@@ -7,6 +7,7 @@ export * from './lib/feed';
 export * from './lib/highlight';
 export * from './lib/location';
 export * from './lib/map';
+export * from './lib/navigation';
 export * from './lib/processed-data';
 export * from './lib/radio';
 export * from './lib/search-index';
