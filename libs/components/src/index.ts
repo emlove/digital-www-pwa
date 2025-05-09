@@ -11,6 +11,7 @@ export * from './lib/EventsView';
 export * from './lib/FavoriteButton';
 export * from './lib/Header';
 export * from './lib/Link';
+export * from './lib/NavigationButton';
 export * from './lib/RadioCard';
 export * from './lib/SearchBar';
 export * from './lib/SearchResults';

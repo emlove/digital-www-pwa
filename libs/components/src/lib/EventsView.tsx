@@ -18,6 +18,7 @@ import Skeleton from '@mui/material/Skeleton';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { useEffect, useMemo, useState } from 'react';
+import { Dayjs } from 'dayjs';
 
 import { EventCard } from './EventCard';
 import { Header } from './Header';
@@ -29,7 +30,15 @@ function getDefaultFilters(): SlugFilters {
   ) as SlugFilters;
 }
 
-export function EventsView({ favoritesOnly }: { favoritesOnly: boolean }) {
+export function EventsView({
+  favoritesOnly = false,
+  happeningAt = null,
+  header = 'Events'
+}: {
+  favoritesOnly?: boolean,
+  happeningAt?: Dayjs | null,
+  header?: React.ReactNode,
+}) {
   const eventTimes = useEventTimes();
   const [filters, setFilters] = useState<SlugFilters>(() => {
     try {
@@ -85,6 +94,7 @@ export function EventsView({ favoritesOnly }: { favoritesOnly: boolean }) {
     const preFilteredEventTimes = sortedEventTimes?.filter(
       (eventTime) =>
         (!favoritesOnly || favoriteEventTimeIds.has(eventTime.event_time_id))
+        && (!happeningAt || happeningAt.isBetween(eventTime.starting, eventTime.ending))
     );
     const selectedTagSlugs = TAGS.reduce((acc, tag) => {
       if (filters[tag.slug]) {
@@ -104,6 +114,7 @@ export function EventsView({ favoritesOnly }: { favoritesOnly: boolean }) {
     selectedDay,
     favoriteEventTimeIds,
     favoritesOnly,
+    happeningAt,
   ]);
 
   useEffect(() => {
@@ -190,7 +201,7 @@ export function EventsView({ favoritesOnly }: { favoritesOnly: boolean }) {
           ) : null
         }
       >
-        {favoritesOnly ? 'Favorites' : 'Events'}
+        {header}
       </Header>
       <Grid container spacing={1}>
         {TAGS.map((tag) => {
@@ -213,7 +224,7 @@ export function EventsView({ favoritesOnly }: { favoritesOnly: boolean }) {
           );
         })}
       </Grid>
-      <SelectDayTabBar
+      {happeningAt ? null : <SelectDayTabBar
         selectedDay={selectedDay}
         setSelectedDay={setSelectedDay}
         id="select-day-tab-bar"
@@ -222,15 +233,16 @@ export function EventsView({ favoritesOnly }: { favoritesOnly: boolean }) {
             display: 'none',
           }
         }}
-      />
+      />}
       {EVENT_DAYS.map((day) => {
         const eventTimesForDay = filteredEventTimes?.filter((eventTime) => eventTime.day_of_week === day && (showAllDayEvents || !eventTime.all_day));
         if (!eventTimesForDay?.length) {
           return null;
         }
         return <Box
+          key={day}
           sx={{
-            display: day === selectedDay ? 'initial' : 'none',
+            display: happeningAt?.format('dddd') === day || day === selectedDay ? 'initial' : 'none',
             "@media print": {
               display: 'initial',
             }
@@ -245,7 +257,7 @@ export function EventsView({ favoritesOnly }: { favoritesOnly: boolean }) {
           }}>
             {day}
           </Typography>
-          {eventTimesForDay?.some((e) => e.all_day) ? (
+          {filteredEventTimes?.some((e) => e.all_day && e.day_of_week === day) ? (
             <Stack direction="column-reverse">
               <Collapse in={showAllDayEvents}>
                 <Grid container spacing={2} padding={2}>
