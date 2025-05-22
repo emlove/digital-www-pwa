@@ -2,6 +2,7 @@
 
 export * from './lib/AgendaView';
 export * from './lib/AppBar';
+export * from './lib/AppShell';
 export * from './lib/ArtCard';
 export * from './lib/BackToTopButton';
 export * from './lib/CampCard';
@@ -14,7 +15,9 @@ export * from './lib/Link';
 export * from './lib/NavigationButton';
 export * from './lib/RadioCard';
 export * from './lib/SearchBar';
+export * from './lib/SearchButton';
 export * from './lib/SearchResults';
+export * from './lib/SearchWindow';
 export * from './lib/SelectDayTabBar';
 export * from './lib/VehicleCard';
 export * from './lib/Head';

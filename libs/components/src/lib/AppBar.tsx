@@ -4,9 +4,12 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import HomeIcon from '@mui/icons-material/Home';
 import MenuIcon from '@mui/icons-material/Menu';
 import MuiAppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
+import Grid from '@mui/material/Grid';
+import Stack from '@mui/material/Stack';
 import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -21,7 +24,7 @@ import { useState } from 'react';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
-import { SearchBar } from '@digital-www-pwa/components';
+import { SearchButton } from '@digital-www-pwa/components';
 
 export function AppBar() {
   const [open, setOpen] = useState(false);
@@ -38,7 +41,6 @@ export function AppBar() {
         edge="start"
         color="inherit"
         aria-label="menu"
-        sx={{ mr: 2 }}
         onClick={() => setOpen(!open)}
       >
         <MenuIcon />
@@ -53,7 +55,6 @@ export function AppBar() {
         edge="start"
         color="inherit"
         aria-label="menu"
-        sx={{ mr: 2 }}
         onClick={() => router.back()}
       >
         <ArrowBackIcon />
@@ -70,31 +71,52 @@ export function AppBar() {
 
   return (
     <>
-      <MuiAppBar
-        position="sticky"
-        sx={{
-          background: 'linear-gradient(90deg, #eb3a52 0%, #e05855 100%)',
-          "@media print": {
-            display: 'none',
-          }
-        }}
-      >
-        <Container sx={{ padding: 0 }}>
-          <Toolbar id="app-bar">
+      <MuiAppBar>
+        <Container
+          sx={{
+            padding: 0,
+            [theme.breakpoints.down('md')]: {
+              padding: 0,
+            },
+          }}
+        >
+          <Toolbar sx={{ paddingLeft: 0, alignItems: 'center' }}>
             {renderButton()}
-            <Typography
-              variant="h6"
-              component={Link}
+            <Link
               href="/"
-              sx={{
+              style={{
+                display: 'flex',
                 flexGrow: 1,
+                flexDirection: 'row',
+                alignItems: 'center',
                 color: 'inherit',
                 textDecoration: 'none',
+                textTransform: 'uppercase',
               }}
             >
-              {tinyScreen ? 'LoF' : 'Lakes of Fire'} 2025{largeScreen ? ' - Doorways in Time' : ''}
-            </Typography>
-            <SearchBar />
+              <img
+                src="/logo.png"
+                alt="Lakes of Fire 2025 - Doorways in Time"
+                style={{ height: 48 }}
+              />
+              <Stack
+                direction="row"
+                sx={{
+                  flexGrow: 1,
+                  justifyContent: 'space-around',
+
+                  [theme.breakpoints.up('xs')]: {
+                    paddingLeft: '10%',
+                    paddingRight: '10%',
+                  },
+                }}
+              >
+                <Box>What</Box>
+                <Box>Where</Box>
+                <Box>When</Box>
+              </Stack>
+            </Link>
+            <SearchButton />
           </Toolbar>
         </Container>
       </MuiAppBar>

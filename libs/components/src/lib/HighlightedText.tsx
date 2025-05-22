@@ -24,7 +24,7 @@ export function HighlightedText({
       elements.push(
         <Typography
           component="span"
-          sx={{ backgroundColor: alpha(theme.palette.secondary.main, 0.8) }}
+          sx={{ backgroundColor: alpha(theme.palette.highlight.main, 0.8) }}
         >
           {text.substring(highlight.start, highlight.end)}
         </Typography>,

@@ -26,8 +26,11 @@ dayjs.extend(isBetween);
 export const EVENT_TIMEZONE = 'America/Detroit';
 dayjs.tz.setDefault(EVENT_TIMEZONE);
 
-export const EVENT_START = dayjs('2025-07-16 10:00:00').tz(EVENT_TIMEZONE, true)
-export const EVENT_END = dayjs('2025-07-20 15:00:00').tz(EVENT_TIMEZONE, true)
+export const EVENT_START = dayjs('2025-07-16 10:00:00').tz(
+  EVENT_TIMEZONE,
+  true,
+);
+export const EVENT_END = dayjs('2025-07-20 15:00:00').tz(EVENT_TIMEZONE, true);
 
 export const MAX_DESCRIPTION_LENGTH = 200;
 
@@ -39,11 +42,13 @@ export const NAVIGATION_LINKS = [
     icon: MapIcon,
   },
   */
-  dayjs().isBetween(EVENT_START, EVENT_END) ? {
-    title: 'Happening Now',
-    path: '/now',
-    icon: CampaignIcon,
-  } : null,
+  dayjs().isBetween(EVENT_START, EVENT_END)
+    ? {
+        title: 'Happening Now',
+        path: '/now',
+        icon: CampaignIcon,
+      }
+    : null,
   {
     title: 'Events',
     path: '/events',
@@ -151,6 +156,6 @@ export const MAP_LOCATION_ANCHORS = [
   },
 ];
 
-export const MAP_ACCURACY_SIZE_FACTOR = 0.30; // %/m
+export const MAP_ACCURACY_SIZE_FACTOR = 0.3; // %/m
 
 export const POSITION_STALE_TIME = 90; // seconds

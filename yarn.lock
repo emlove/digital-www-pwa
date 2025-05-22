@@ -2513,6 +2513,8 @@ __metadata:
     "@eslint/compat": "npm:^1.1.1"
     "@eslint/eslintrc": "npm:^3.2.0"
     "@eslint/js": "npm:^9.8.0"
+    "@fontsource/cinzel": "npm:^5.2.5"
+    "@fontsource/cinzel-decorative": "npm:^5.2.5"
     "@fontsource/roboto": "npm:^5.1.1"
     "@mui/icons-material": "npm:^6.4.5"
     "@mui/material": "npm:^6.4.5"
@@ -2556,8 +2558,10 @@ __metadata:
     nx: "npm:20.2.2"
     postcss: "npm:8.5.3"
     prettier: "npm:^2.6.2"
+    prop-types: "npm:^15.8.1"
     react: "npm:18.3.1"
     react-dom: "npm:18.3.1"
+    react-split-flap-effect: "npm:^1.0.0"
     react-zoom-pan-pinch: "npm:^3.7.0"
     tailwind-merge: "npm:^2.6.0"
     ts-jest: "npm:^29.1.0"
@@ -2829,6 +2833,20 @@ __metadata:
   dependencies:
     levn: "npm:^0.4.1"
   checksum: 10c0/1bcfc0a30b1df891047c1d8b3707833bded12a057ba01757a2a8591fdc8d8fe0dbb8d51d4b0b61b2af4ca1d363057abd7d2fb4799f1706b105734f4d3fa0dbf1
+  languageName: node
+  linkType: hard
+
+"@fontsource/cinzel-decorative@npm:^5.2.5":
+  version: 5.2.5
+  resolution: "@fontsource/cinzel-decorative@npm:5.2.5"
+  checksum: 10c0/89093947496d97c5520db9d6e43f74c906e49cecfde22df96ded6d9878afcafbb83d1da842be14051e9381fe02cdc11f46ec7116cdbcea2025a2474bf477428b
+  languageName: node
+  linkType: hard
+
+"@fontsource/cinzel@npm:^5.2.5":
+  version: 5.2.5
+  resolution: "@fontsource/cinzel@npm:5.2.5"
+  checksum: 10c0/7c1ee3632fbcbefb830958450ae5f17b97e7147ee028a3a97564e1f30d8dac51e856c5eefe24b97c568ba8ed01def00c503268c03e959e240db581237b8f7da0
   languageName: node
   linkType: hard
 
@@ -7331,6 +7349,13 @@ __metadata:
   version: 1.4.1
   resolution: "cjs-module-lexer@npm:1.4.1"
   checksum: 10c0/5a7d8279629c9ba8ccf38078c2fed75b7737973ced22b9b5a54180efa57fb2fe2bb7bec6aec55e3b8f3f5044f5d7b240347ad9bd285e7c3d0ee5b0a1d0504dfc
+  languageName: node
+  linkType: hard
+
+"classnames@npm:^2.2.6":
+  version: 2.5.1
+  resolution: "classnames@npm:2.5.1"
+  checksum: 10c0/afff4f77e62cea2d79c39962980bf316bacb0d7c49e13a21adaadb9221e1c6b9d3cdb829d8bb1b23c406f4e740507f37e1dcf506f7e3b7113d17c5bab787aa69
   languageName: node
   linkType: hard
 
@@ -14810,6 +14835,19 @@ __metadata:
   version: 19.0.0
   resolution: "react-is@npm:19.0.0"
   checksum: 10c0/d1be8e8500cf04f76df71942a21ef3a71266397a383d7ec8885f35190df818d35c65efd35aed7be47a89ad99aaff2c52e0c4e39e8930844a6b997622e50625a8
+  languageName: node
+  linkType: hard
+
+"react-split-flap-effect@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "react-split-flap-effect@npm:1.0.0"
+  dependencies:
+    classnames: "npm:^2.2.6"
+  peerDependencies:
+    prop-types: ^15.5.4
+    react: ^16.8.0
+    react-dom: ^16.8.0
+  checksum: 10c0/daa0350dd2732eb0ab86ae4a4ec9d49ab87a186804da158ecf1381bf660dbe57a0e70262678863421e424c094b308b0ae0163ffc761b96ef59d7b8fef3f17024
   languageName: node
   linkType: hard
 
