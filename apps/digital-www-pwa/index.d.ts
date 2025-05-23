@@ -4,3 +4,7 @@ declare module '*.svg' {
   export const ReactComponent: any;
   export default content;
 }
+
+declare module 'react-split-flap-effect' {
+  export const FlapDisplay;
+}

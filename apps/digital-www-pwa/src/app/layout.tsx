@@ -6,11 +6,7 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import { Roboto } from 'next/font/google';
 import { useEffect } from 'react';
 
-import {
-  AppBar,
-  BackToTopButton,
-  HeadComponent,
-} from '@digital-www-pwa/components';
+import { AppShell, HeadComponent } from '@digital-www-pwa/components';
 import {
   FavoritesProvider,
   FeedProvider,
@@ -26,6 +22,9 @@ const roboto = Roboto({
   display: 'swap',
   variable: '--font-roboto',
 });
+
+import '@fontsource/cinzel';
+import '@fontsource/cinzel-decorative';
 
 export default function RootLayout({
   children,
@@ -45,18 +44,14 @@ export default function RootLayout({
       <HeadComponent />
       <body className={roboto.variable}>
         <AppRouterCacheProvider>
-          <CssBaseline />
           <ThemeProvider theme={theme}>
+            <CssBaseline />
             <FeedProvider>
               <FavoritesProvider>
                 <ProcessedDataProvider>
                   <SearchIndexProvider>
                     <GeolocationProvider>
-                      <AppBar />
-                      <Container sx={{ paddingTop: 2, paddingBottom: 2 }}>
-                        {children}
-                        <BackToTopButton />
-                      </Container>
+                      <AppShell>{children}</AppShell>
                     </GeolocationProvider>
                   </SearchIndexProvider>
                 </ProcessedDataProvider>
