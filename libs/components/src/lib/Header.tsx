@@ -1,4 +1,5 @@
 'use client';
+import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Typography, { TypographyProps } from '@mui/material/Typography';
 
@@ -8,6 +9,7 @@ interface HeaderProps extends TypographyProps {
 }
 
 export function Header({ children, button, ...props }: HeaderProps) {
+  const isLongHeading = typeof children === 'string' && children.length > 25;
   return (
     <Stack direction="row">
       <Typography
@@ -21,7 +23,13 @@ export function Header({ children, button, ...props }: HeaderProps) {
         component="span"
         {...props}
       >
-        {children}
+        <Box
+          sx={{
+            fontSize: isLongHeading ? '50%' : 'inherit',
+          }}
+        >
+          {children}
+        </Box>
       </Typography>
       <Stack justifyContent="center">{button}</Stack>
     </Stack>

@@ -5,12 +5,18 @@ import Grid from '@mui/material/Grid2';
 import Skeleton from '@mui/material/Skeleton';
 import { useMemo } from 'react';
 
+function getSortName(name: string): string {
+  return name.replace(/^The\s+/, '');
+}
+
 export function CampsPage() {
   const camps = useCamps();
   const sortedCamps = useMemo(
     () =>
       camps &&
-      Object.values(camps).toSorted((a, b) => a.name.localeCompare(b.name)),
+      Object.values(camps).toSorted((a, b) =>
+        getSortName(a.name).localeCompare(getSortName(b.name))
+      ),
     [camps]
   );
 
