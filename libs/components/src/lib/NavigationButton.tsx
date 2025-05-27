@@ -2,12 +2,12 @@ import RouterLink from 'next/link';
 import Button from '@mui/material/Button';
 import type { NavigationLink } from '@digital-www-pwa/types';
 
-export function NavigationButton({linkData} : {linkData: NavigationLink}) {
+export function NavigationButton({ linkData }: { linkData: NavigationLink }) {
   const IconComponent = linkData.icon;
 
   const getAnimation = () => {
     if (linkData.path === '/now') {
-      return "breathing 1800ms alternate infinite";
+      return 'breathing 1800ms alternate infinite';
     }
 
     return null;
@@ -18,11 +18,11 @@ export function NavigationButton({linkData} : {linkData: NavigationLink}) {
       component={RouterLink}
       href={linkData.path}
       sx={{
-        "@keyframes breathing": {
-          "0%": {
+        '@keyframes breathing': {
+          '0%': {
             scale: 1.03,
           },
-          "100%": {
+          '100%': {
             scale: 0.98,
           },
         },
@@ -31,8 +31,7 @@ export function NavigationButton({linkData} : {linkData: NavigationLink}) {
         padding: 2,
         animation: getAnimation(),
       }}
-      variant="contained"
-      startIcon={<IconComponent />}
+      color="secondary"
     >
       {linkData.title}
     </Button>

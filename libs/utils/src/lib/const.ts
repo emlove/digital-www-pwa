@@ -28,7 +28,7 @@ dayjs.tz.setDefault(EVENT_TIMEZONE);
 
 export const EVENT_START = dayjs('2025-07-16 10:00:00').tz(
   EVENT_TIMEZONE,
-  true,
+  true
 );
 export const EVENT_END = dayjs('2025-07-20 15:00:00').tz(EVENT_TIMEZONE, true);
 
