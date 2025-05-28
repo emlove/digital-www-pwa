@@ -115,13 +115,7 @@ export function HomePage() {
       {NAVIGATION_LINKS.map((linkData) => {
         return (
           <Grid key={linkData.path} size={{ xxs: 12, sm: 6, md: 4 }}>
-            <Button
-              component={RouterLink}
-              href={linkData.path}
-              color="secondary"
-            >
-              {linkData.title}
-            </Button>
+            <NavigationButton linkData={linkData} />
           </Grid>
         );
       })}

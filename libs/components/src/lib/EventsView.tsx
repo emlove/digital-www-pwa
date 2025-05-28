@@ -23,6 +23,7 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { useEffect, useMemo, useState } from 'react';
 import { Dayjs } from 'dayjs';
+import { useTheme } from '@mui/material/styles';
 
 import { EventCard } from './EventCard';
 import { Header } from './Header';
@@ -30,7 +31,7 @@ import { SelectDayTabBar } from './SelectDayTabBar';
 
 function getDefaultFilters(): SlugFilters {
   return Object.fromEntries(
-    TAGS.map((tag) => [tag.slug, false]),
+    TAGS.map((tag) => [tag.slug, false])
   ) as SlugFilters;
 }
 
@@ -47,6 +48,7 @@ export function EventsView({
   whereType?: string | null;
   whereName?: string | null;
 }) {
+  const theme = useTheme();
   const eventTimes = useEventTimes();
   const [filters, setFilters] = useState<SlugFilters>(() => {
     try {
@@ -54,13 +56,13 @@ export function EventsView({
         return getDefaultFilters();
       }
       const storedFilters = JSON.parse(
-        localStorage.getItem('lastFilters') || '[]',
+        localStorage.getItem('lastFilters') || '[]'
       ) as SlugFilters;
       if (storedFilters === null) {
         return getDefaultFilters();
       }
       return Object.fromEntries(
-        TAGS.map((tag) => [tag.slug, !!storedFilters[tag.slug]]),
+        TAGS.map((tag) => [tag.slug, !!storedFilters[tag.slug]])
       ) as SlugFilters;
     } catch (err) {
       console.error(err);
@@ -83,9 +85,9 @@ export function EventsView({
         (a, b) =>
           a.starting.unix() - b.starting.unix() || // Sort first by start time
           a.ending.unix() - b.ending.unix() || // Then by earliest end time
-          a.event.title.localeCompare(b.event.title), // Then alphabetically
+          a.event.title.localeCompare(b.event.title) // Then alphabetically
       ),
-    [eventTimes],
+    [eventTimes]
   );
 
   const filteredEventTimes = useMemo<Array<ParsedEventTime> | null>(() => {
@@ -96,7 +98,7 @@ export function EventsView({
         (!happeningAt ||
           happeningAt.isBetween(eventTime.starting, eventTime.ending)) &&
         (!whereType || eventTime.event.where_type === whereType) &&
-        (!whereName || eventTime.event.where_name === whereName),
+        (!whereName || eventTime.event.where_name === whereName)
     );
     const selectedTagSlugs = TAGS.reduce((acc, tag) => {
       if (filters[tag.slug]) {
@@ -108,7 +110,7 @@ export function EventsView({
       return preFilteredEventTimes;
     }
     return preFilteredEventTimes.filter((eventTime: ParsedEventTime) =>
-      [...selectedTagSlugs].some((slug) => eventTime.event[slug]),
+      [...selectedTagSlugs].some((slug) => eventTime.event[slug])
     );
   }, [
     sortedEventTimes,
@@ -140,7 +142,7 @@ export function EventsView({
     }
     return (
       availableEventDays.find(
-        (d) => d === localStorage.getItem('lastSelectedDay'),
+        (d) => d === localStorage.getItem('lastSelectedDay')
       ) || availableEventDays[0]
     );
   });
@@ -312,7 +314,7 @@ export function EventsView({
                 {day}
               </Typography>
               {filteredEventTimes?.some(
-                (e) => e.all_day && e.day_of_week === day,
+                (e) => e.all_day && e.day_of_week === day
               ) ? (
                 <Stack direction="column-reverse">
                   <Collapse in={showAllDayEvents}>
@@ -325,11 +327,14 @@ export function EventsView({
                       margin: 2,
                       padding: 1,
                       position: 'sticky',
-                      top: (theme) => theme.spacing(9),
+                      top: theme.spacing(9),
                       display: 'flex',
-                      backgroundColor: 'white',
+                      backgroundColor: theme.palette.background.default,
                       '@media print': {
                         display: 'none',
+                      },
+                      [theme.breakpoints.down('xs')]: {
+                        fontSize: '4.5vw',
                       },
                     }}
                     variant="outlined"
