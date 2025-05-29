@@ -78,30 +78,26 @@ export function EventsView({
   });
 
   const favoriteEventTimeIds = useFavoriteEventTimeIds();
-  const sortedEventTimes = useMemo<Array<ParsedEventTime> | null>(
-    () =>
-      eventTimes &&
-      Object.values(eventTimes).toSorted(
+  const eventTimesForPage = useMemo<Array<ParsedEventTime> | null>(() => {
+    if (!eventTimes) return null;
+    return Object.values(eventTimes)
+      .filter(
+        (eventTime) =>
+          (!favoritesOnly ||
+            favoriteEventTimeIds.has(eventTime.event_time_id)) &&
+          (!happeningAt ||
+            happeningAt.isBetween(eventTime.starting, eventTime.ending)) &&
+          (!whereType || eventTime.event.where_type === whereType) &&
+          (!whereName || eventTime.event.where_name === whereName)
+      )
+      .toSorted(
         (a, b) =>
           a.starting.unix() - b.starting.unix() || // Sort first by start time
           a.ending.unix() - b.ending.unix() || // Then by earliest end time
           a.event.title.localeCompare(b.event.title) // Then alphabetically
-      ),
-    [eventTimes]
-  );
-
-  const eventTimesForPage = useMemo<Array<ParsedEventTime> | null>(() => {
-    if (!sortedEventTimes) return null;
-    return sortedEventTimes.filter(
-      (eventTime) =>
-        (!favoritesOnly || favoriteEventTimeIds.has(eventTime.event_time_id)) &&
-        (!happeningAt ||
-          happeningAt.isBetween(eventTime.starting, eventTime.ending)) &&
-        (!whereType || eventTime.event.where_type === whereType) &&
-        (!whereName || eventTime.event.where_name === whereName)
-    );
+      );
   }, [
-    sortedEventTimes,
+    eventTimes,
     favoriteEventTimeIds,
     favoritesOnly,
     happeningAt,
