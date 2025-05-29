@@ -90,9 +90,9 @@ export function EventsView({
     [eventTimes]
   );
 
-  const filteredEventTimes = useMemo<Array<ParsedEventTime> | null>(() => {
+  const eventTimesForPage = useMemo<Array<ParsedEventTime> | null>(() => {
     if (!sortedEventTimes) return null;
-    const preFilteredEventTimes = sortedEventTimes.filter(
+    return sortedEventTimes.filter(
       (eventTime) =>
         (!favoritesOnly || favoriteEventTimeIds.has(eventTime.event_time_id)) &&
         (!happeningAt ||
@@ -100,27 +100,33 @@ export function EventsView({
         (!whereType || eventTime.event.where_type === whereType) &&
         (!whereName || eventTime.event.where_name === whereName)
     );
-    const selectedTagSlugs = TAGS.reduce((acc, tag) => {
-      if (filters[tag.slug]) {
-        acc.add(tag.slug);
-      }
-      return acc;
-    }, new Set<Slugs>());
-    if (selectedTagSlugs.size === 0) {
-      return preFilteredEventTimes;
-    }
-    return preFilteredEventTimes.filter((eventTime: ParsedEventTime) =>
-      [...selectedTagSlugs].some((slug) => eventTime.event[slug])
-    );
   }, [
     sortedEventTimes,
-    filters,
     favoriteEventTimeIds,
     favoritesOnly,
     happeningAt,
     whereType,
     whereName,
   ]);
+
+  const filteredEventTimes = useMemo<Array<ParsedEventTime> | null>(() => {
+    if (!eventTimesForPage) return null;
+
+    const selectedTagSlugs = [
+      ...TAGS.reduce((acc, tag) => {
+        if (filters[tag.slug]) {
+          acc.add(tag.slug);
+        }
+        return acc;
+      }, new Set<Slugs>()),
+    ];
+
+    return eventTimesForPage.filter(
+      (eventTime) =>
+        selectedTagSlugs.length === 0 ||
+        [...selectedTagSlugs].some((slug) => eventTime.event[slug])
+    );
+  }, [eventTimesForPage, filters]);
 
   const availableEventDays = useMemo<Array<string> | null>(() => {
     if (!filteredEventTimes) return null;
@@ -148,21 +154,19 @@ export function EventsView({
   });
 
   const availableTags = useMemo<Array<TagItem> | null>(() => {
-    if (!filteredEventTimes) return null;
+    if (!eventTimesForPage) return null;
 
     const availableTags = [
-      ...filteredEventTimes.reduce((tags, eventTime) => {
-        TAGS.forEach((t) => {
-          if (eventTime.event[t.slug]) {
-            tags.add(t);
-          }
-        });
+      ...TAGS.reduce((tags, tag) => {
+        if (eventTimesForPage.some((eventTime) => eventTime.event[tag.slug])) {
+          tags.add(tag);
+        }
         return tags;
       }, new Set<TagItem>()),
     ];
 
     return [...availableTags];
-  }, [filteredEventTimes]);
+  }, [eventTimesForPage]);
 
   useEffect(() => {
     const weeklySelectionElement =
