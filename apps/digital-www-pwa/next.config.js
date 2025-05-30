@@ -23,6 +23,7 @@ const nextConfig = {
       },
     ],
   },
+  swcMinify: false,
 };
 
 const plugins = [
