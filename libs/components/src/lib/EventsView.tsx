@@ -12,18 +12,18 @@ import { Slugs, TAGS } from '@digital-www-pwa/utils';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import FilterAltOffIcon from '@mui/icons-material/FilterAltOff';
-import { Chip } from '@mui/material';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import Chip from '@mui/material/Chip';
 import Collapse from '@mui/material/Collapse';
 import Grid from '@mui/material/Grid2';
 import IconButton from '@mui/material/IconButton';
 import Skeleton from '@mui/material/Skeleton';
 import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
-import { useEffect, useMemo, useState } from 'react';
-import { Dayjs } from 'dayjs';
 import { useTheme } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import { Dayjs } from 'dayjs';
+import { useEffect, useMemo, useState } from 'react';
 
 import { EventCard } from './EventCard';
 import { Header } from './Header';
@@ -79,7 +79,9 @@ export function EventsView({
 
   const favoriteEventTimeIds = useFavoriteEventTimeIds();
   const eventTimesForPage = useMemo<Array<ParsedEventTime> | null>(() => {
-    if (!eventTimes) return null;
+    if (!eventTimes) {
+      return null;
+    }
     return Object.values(eventTimes)
       .filter(
         (eventTime) =>
@@ -106,7 +108,9 @@ export function EventsView({
   ]);
 
   const filteredEventTimes = useMemo<Array<ParsedEventTime> | null>(() => {
-    if (!eventTimesForPage) return null;
+    if (!eventTimesForPage) {
+      return null;
+    }
 
     const selectedTagSlugs = [
       ...TAGS.reduce((acc, tag) => {
@@ -125,7 +129,9 @@ export function EventsView({
   }, [eventTimesForPage, filters]);
 
   const availableEventDays = useMemo<Array<string> | null>(() => {
-    if (!filteredEventTimes) return null;
+    if (!filteredEventTimes) {
+      return null;
+    }
 
     const availableDays = [
       ...filteredEventTimes.reduce((eventDays, eventTime) => {
@@ -138,7 +144,9 @@ export function EventsView({
   }, [filteredEventTimes]);
 
   const [selectedDay, setSelectedDay] = useState<string>(() => {
-    if (!availableEventDays) return 'Wednesday';
+    if (!availableEventDays) {
+      return 'Wednesday';
+    }
     if (typeof localStorage === 'undefined') {
       return availableEventDays[0];
     }
@@ -150,7 +158,9 @@ export function EventsView({
   });
 
   const availableTags = useMemo<Array<TagItem> | null>(() => {
-    if (!eventTimesForPage) return null;
+    if (!eventTimesForPage) {
+      return null;
+    }
 
     const availableTags = [
       ...TAGS.reduce((tags, tag) => {
