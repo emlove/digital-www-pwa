@@ -1,6 +1,5 @@
 'use client';
 import type {
-  Feed,
   ParsedEventTime,
   ProcessedDataContextProps,
   ProcessedEventItem,
@@ -106,8 +105,6 @@ export function ProcessedDataProvider({
 
   useEffect(() => {
     async function fetchDigitalWWW() {
-      const res = await fetch('/api/feed');
-      const data = (await res.json()) as Feed;
       setProcessedData((lastState) => ({
         ...lastState,
       }));

@@ -2,6 +2,7 @@ import { DataSource } from 'typeorm';
 
 import { Favorites } from './entities/Favorites';
 import { AddFavoritesEntity1748652419144 } from './migrations/1748652419144-AddFavoritesEntity';
+import 'pg';
 
 export const AppDataSource = new DataSource({
   type: process.env['TYPEORM_CONNECTION'] as unknown as 'postgres',
