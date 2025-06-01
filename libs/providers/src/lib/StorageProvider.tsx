@@ -4,6 +4,11 @@ import type {
   ProcessedFavoritesStorage,
   StorageState,
 } from '@digital-www-pwa/types';
+import { EVENT_TIMEZONE } from '@digital-www-pwa/utils';
+import dayjs from 'dayjs';
+import localizedFormat from 'dayjs/plugin/localizedFormat';
+import timezone from 'dayjs/plugin/timezone';
+import utc from 'dayjs/plugin/utc';
 import {
   createContext,
   useContext,
@@ -13,11 +18,7 @@ import {
   useMemo,
   useEffect,
 } from 'react';
-import dayjs from 'dayjs';
-import { EVENT_TIMEZONE } from '@digital-www-pwa/utils';
-import utc from 'dayjs/plugin/utc';
-import timezone from 'dayjs/plugin/timezone';
-import localizedFormat from 'dayjs/plugin/localizedFormat';
+
 import { useAuthContext } from './AuthProvider';
 
 dayjs.extend(utc);
@@ -137,7 +138,6 @@ export const StorageProvider = ({ children }: { children: ReactNode }) => {
       favorites: {
         checkingFavoritesStorage,
         favoritesStorage,
-        readFavorites,
         upsertFavorites,
         deleteFavorites,
       },
@@ -145,7 +145,6 @@ export const StorageProvider = ({ children }: { children: ReactNode }) => {
     [
       checkingFavoritesStorage,
       favoritesStorage,
-      readFavorites,
       upsertFavorites,
       deleteFavorites,
     ]

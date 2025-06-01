@@ -32,13 +32,13 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // useEffect(() => {
-  //   if ('serviceWorker' in navigator) {
-  //     navigator.serviceWorker
-  //       .register('/sw.js')
-  //       .then((registration) => console.log('scope is: ', registration.scope));
-  //   }
-  // }, []);
+  useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker
+        .register('/sw.js')
+        .then((registration) => console.log('scope is: ', registration.scope));
+    }
+  }, []);
 
   return (
     <html lang="en">
