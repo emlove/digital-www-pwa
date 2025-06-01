@@ -7,7 +7,7 @@ COPY .yarn/releases/yarn-4.9.1.cjs ./.yarn/releases/yarn-4.9.1.cjs
 RUN yarn install
 
 FROM node:22-alpine AS app
-RUN mkdir -p /app/.next/cache/fetch-cache && chown -R node:node /app
+RUN mkdir -p /app/.next/cache/fetch-cache && chown -R node:node /app && chmod 777 /app/.next/cache/fetch-cache
 USER node
 WORKDIR /app
 COPY --from=builder --chown=node:node /app/node_modules node_modules
