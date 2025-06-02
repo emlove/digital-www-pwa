@@ -16,6 +16,7 @@ const INITIAL_DATA: AuthState = {
   isAuthenticated: false,
   backdrop: false,
   jwtPayload: null,
+  isOver18: false,
   checkAuth: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
   logout: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
   enableBackdrop: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
