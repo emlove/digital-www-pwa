@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
+import { ART, RADIO, VEHICLES } from '@digital-www-pwa/utils';
 
 async function fetchData(dataType: string) {
   const response = await fetch(
@@ -20,10 +21,10 @@ export async function GET(): Promise<Response> {
 
   return NextResponse.json({
     events,
-    art: [],
+    art: ART,
     camps,
-    radios: [],
-    vehicles: [],
+    radios: RADIO,
+    vehicles: VEHICLES,
     locations,
     departments,
   });

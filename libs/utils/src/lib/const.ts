@@ -2,6 +2,7 @@ import type { TagItem } from '@digital-www-pwa/types';
 import BrushIcon from '@mui/icons-material/Brush';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import CampaignIcon from '@mui/icons-material/Campaign';
+import DriveEtaIcon from '@mui/icons-material/DriveEta';
 import EventIcon from '@mui/icons-material/Event';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FestivalIcon from '@mui/icons-material/Festival';
@@ -10,6 +11,8 @@ import LocalBarIcon from '@mui/icons-material/LocalBar';
 import LocalDiningIcon from '@mui/icons-material/LocalDining';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import NoDrinksIcon from '@mui/icons-material/NoDrinks';
+import PaletteIcon from '@mui/icons-material/Palette';
+import RadioIcon from '@mui/icons-material/Radio';
 import TheaterComedyIcon from '@mui/icons-material/TheaterComedy';
 import dayjs from 'dayjs';
 import isBetween from 'dayjs/plugin/isBetween';
@@ -61,19 +64,16 @@ export const NAVIGATION_LINKS = [
     path: '/volunteer-shifts',
     icon: CalendarTodayIcon,
   },
-  /*
   {
     title: 'Art',
     path: '/art',
     icon: PaletteIcon,
   },
-  */
   {
     title: 'Camps',
     path: '/camps',
     icon: FestivalIcon,
   },
-  /*
   {
     title: 'Radio SGC',
     path: '/radio',
@@ -84,7 +84,6 @@ export const NAVIGATION_LINKS = [
     path: '/vehicles',
     icon: DriveEtaIcon,
   },
-  */
 ].filter((link) => link !== null);
 
 export const EVENT_DAYS = [
@@ -161,3 +160,7 @@ export const MAP_LOCATION_ANCHORS = [
 export const MAP_ACCURACY_SIZE_FACTOR = 0.3; // %/m
 
 export const POSITION_STALE_TIME = 90; // seconds
+
+export const ART = [];
+export const RADIO = [];
+export const VEHICLES = [];

@@ -11,8 +11,8 @@ import timezone from 'dayjs/plugin/timezone';
 import utc from 'dayjs/plugin/utc';
 import { useState, useEffect, createContext, useContext } from 'react';
 
-import { useFeedContext } from './FeedProvider';
 import { useAuthContext } from './AuthProvider';
+import { useFeedContext } from './FeedProvider';
 
 const INITIAL_DATA: ProcessedDataContextProps = {
   arts: null,
