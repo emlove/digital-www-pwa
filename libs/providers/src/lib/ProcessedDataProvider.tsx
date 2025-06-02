@@ -12,6 +12,7 @@ import utc from 'dayjs/plugin/utc';
 import { useState, useEffect, createContext, useContext } from 'react';
 
 import { useFeedContext } from './FeedProvider';
+import { useAuthContext } from './AuthProvider';
 
 const INITIAL_DATA: ProcessedDataContextProps = {
   arts: null,
@@ -101,16 +102,8 @@ export function ProcessedDataProvider({
   children: React.ReactNode;
 }) {
   const feed = useFeedContext();
+  const { isOver18 } = useAuthContext();
   const [processedData, setProcessedData] = useState(INITIAL_DATA);
-
-  useEffect(() => {
-    async function fetchDigitalWWW() {
-      setProcessedData((lastState) => ({
-        ...lastState,
-      }));
-    }
-    fetchDigitalWWW();
-  }, []);
 
   useEffect(() => {
     const { events, art, camps, radios, vehicles, locations } = feed;
@@ -119,14 +112,16 @@ export function ProcessedDataProvider({
       return;
     }
 
-    const parsedEvents: ProcessedEventItem[] = events.map((event) => ({
-      ...event,
-      event_times: event.event_times.map((eventTime) => ({
-        ...eventTime,
-        starting: dayjs.tz(eventTime.starting, EVENT_TIMEZONE),
-        ending: dayjs(eventTime.ending).tz(EVENT_TIMEZONE, true),
-      })),
-    }));
+    const parsedEvents: ProcessedEventItem[] = events
+      .filter((event) => isOver18 || !event.red_light)
+      .map((event) => ({
+        ...event,
+        event_times: event.event_times.map((eventTime) => ({
+          ...eventTime,
+          starting: dayjs.tz(eventTime.starting, EVENT_TIMEZONE),
+          ending: dayjs(eventTime.ending).tz(EVENT_TIMEZONE, true),
+        })),
+      }));
 
     const eventTimes: ParsedEventTime[] = parsedEvents.reduce(
       (previousValue, parsedEvent) => {
@@ -169,7 +164,7 @@ export function ProcessedDataProvider({
       ),
       locations,
     }));
-  }, [feed]);
+  }, [feed, isOver18]);
 
   return (
     <ProcessedDataContext.Provider value={processedData}>

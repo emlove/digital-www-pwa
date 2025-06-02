@@ -13,6 +13,7 @@ export interface AuthState {
   isAuthenticated: boolean;
   backdrop: boolean;
   jwtPayload: JwtPayload | null;
+  isOver18: boolean;
   logout: () => void;
   checkAuth: () => void;
   enableBackdrop: () => void;
