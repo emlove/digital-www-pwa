@@ -16,6 +16,7 @@ const INITIAL_DATA: AuthState = {
   isAuthenticated: false,
   backdrop: false,
   jwtPayload: null,
+  isOver18: false,
   checkAuth: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
   logout: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
   enableBackdrop: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
@@ -48,6 +49,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     fetchAuth();
   }, []);
 
+  // TODO: Base this off of new auth token response field
+  const isOver18 = isAuthenticated;
+
   const enableBackdrop = useCallback(() => {
     setBackdrop(true);
   }, []);
@@ -64,6 +68,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       isAuthenticated,
       backdrop,
       jwtPayload,
+      isOver18,
       checkAuth,
       logout,
       enableBackdrop,
@@ -73,6 +78,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       isAuthenticated,
       backdrop,
       jwtPayload,
+      isOver18,
       checkAuth,
       logout,
       enableBackdrop,
