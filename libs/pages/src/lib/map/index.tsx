@@ -185,8 +185,8 @@ export function MapPage() {
     <Stack
       sx={{
         position: 'absolute',
-        height: 'calc(100vh - 96px)',
-        width: '100vw',
+        height: 'calc(100svh - 96px)',
+        width: '100svw',
         left: 0,
       }}
     >
