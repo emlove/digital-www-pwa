@@ -28,7 +28,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             backgroundImage: "url('/background.jpg')",
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
-            minHeight: '100vh',
+            minHeight: '100svh',
             backgroundPositionX: 'center',
             backgroundPositionY: 'bottom',
             filter: 'blur(0.8px)',
