@@ -37,7 +37,7 @@ export default function RootLayout({
     <ThemeProvider theme={theme}>
       <html lang="en">
         <HeadComponent />
-        <body style={{ fontFamily: 'Quattrocento' }}>
+        <body style={{ fontFamily: theme.typography.fontFamily }}>
           <AppRouterCacheProvider>
             <CssBaseline />
             <AuthProvider>
