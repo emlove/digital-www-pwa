@@ -23,10 +23,11 @@ export function HeadComponent() {
         href="/favicon-16x16.png"
       />
       <link rel="manifest" href="/site.webmanifest" />
+      <link rel="preload" as="image" href="/map.jpg" />
       <meta name="format-detection" content="telephone=no" />
       <meta name="msapplication-tap-highlight" content="no" />
-      <meta name="msapplication-TileColor" content="#ffffff" />
-      <meta name="theme-color" content="#ffffff" />
+      <meta name="msapplication-TileColor" content="#193058" />
+      <meta name="theme-color" content="#193058" />
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-status-bar-style" content="white" />
       <meta name="mobile-web-app-capable" content="yes" />
