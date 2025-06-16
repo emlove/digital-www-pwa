@@ -20,12 +20,12 @@ export function CampsItemPage() {
 
   return (
     <>
-      <Header>{camp === null ? <Skeleton /> : camp.name}</Header>
+      <Header>{!camp ? <Skeleton /> : camp.name}</Header>
       <Typography variant="h5">
-        {camp === null ? <Skeleton /> : camp.location_name}
+        {!camp ? <Skeleton /> : camp.location_name}
       </Typography>
       <Typography variant="body1">
-        {camp === null
+        {!camp
           ? Array(4)
               .fill(null)
               .map((_, index) => <Skeleton key={index} />)

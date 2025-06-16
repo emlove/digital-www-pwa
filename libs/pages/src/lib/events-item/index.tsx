@@ -31,7 +31,7 @@ export function EventsItemPage() {
   const camps = useCamps();
 
   const otherTimes = useMemo(() => {
-    if (eventTime === null) {
+    if (!eventTime) {
       return [];
     }
 

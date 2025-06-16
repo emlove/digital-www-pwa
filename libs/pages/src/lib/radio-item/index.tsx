@@ -10,12 +10,12 @@ export function RadioItemPage() {
   const radio = useRadio(id);
   return (
     <>
-      <Header>{radio === null ? <Skeleton /> : radio.radio_dj_name}</Header>
+      <Header>{!radio ? <Skeleton /> : radio.radio_dj_name}</Header>
       <Typography variant="h5">
-        {radio === null ? <Skeleton /> : radio.radio_time.format('dddd LT')}
+        {!radio ? <Skeleton /> : radio.radio_time.format('dddd LT')}
       </Typography>
       <Typography variant="body1">
-        {radio === null
+        {!radio
           ? Array(4)
               .fill(null)
               .map((_, index) => <Skeleton key={index} />)

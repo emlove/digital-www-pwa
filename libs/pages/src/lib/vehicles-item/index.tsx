@@ -10,9 +10,9 @@ export function VehiclesItemPage() {
   const vehicle = useVehicle(id);
   return (
     <>
-      <Header>{vehicle === null ? <Skeleton /> : vehicle.title}</Header>
+      <Header>{!vehicle ? <Skeleton /> : vehicle.title}</Header>
       <Typography variant="body1">
-        {vehicle === null
+        {!vehicle
           ? Array(4)
               .fill(null)
               .map((_, index) => <Skeleton key={index} />)

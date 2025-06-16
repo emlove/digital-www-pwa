@@ -11,7 +11,7 @@ export function ArtItemPage() {
   const location = useLocation(art?.location);
 
   function renderFunding() {
-    if (art === null) {
+    if (!art) {
       return null;
     }
 
