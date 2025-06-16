@@ -14,7 +14,22 @@ import { useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import dayjs from 'dayjs';
 
+const DIRECTIONS_URL =
+  'https://maps.google.com/maps/dir//Lucky+Lake+Campground+%26+Outdoor+Center+MAIL+ADDRESS:+3977+W.+Wilke+Rd+GPS:+3280+Winston+Rd.+Rothbury+49432+GPS:+3474+W.+Winston+Rd,+Rothbury+49452+Montague,+MI+49437/';
+
 const EXTERNAL_LINKS = [
+  {
+    title: 'Directions',
+    url: DIRECTIONS_URL,
+  },
+  {
+    title: 'Gate Hours',
+    url: 'https://lakesoffire.org/departments/gate/',
+  },
+  {
+    title: 'Exodus',
+    url: 'https://lakesoffire.org/the-event/survival-guide/#:~:text=EXODUS,-All',
+  },
   {
     title: 'Survival Guide',
     url: 'http://lakesoffire.org/the-event/survival-guide',
@@ -58,7 +73,9 @@ export function HomePage() {
             >
               Doorways in Time
             </Box>
-            <Box sx={{ fontSize: '1.8rem' }}>Lucky Lake Campground</Box>
+            <MuiLink sx={{ fontSize: '1.8rem' }} href={DIRECTIONS_URL}>
+              Lucky Lake Campground
+            </MuiLink>
           </Stack>
         </Typography>
       </Grid>
@@ -110,17 +127,19 @@ export function HomePage() {
         </Stack>
       </Grid>
       {NAVIGATION_LINKS.map((linkData) => {
+        if (
+          linkData.path === '/now' &&
+          !dayjs().isBetween(EVENT_START, EVENT_END)
+        ) {
+          return null;
+        }
         return (
           <Grid key={linkData.path} size={{ xxs: 12, sm: 6, md: 4 }}>
             <NavigationButton linkData={linkData} />
           </Grid>
         );
       })}
-      <Grid size={{ xxs: 12 }}>
-        <Button component={MuiLink} href={''} color="secondary">
-          Live Stream Radio SGC
-        </Button>
-      </Grid>
+      <Grid size={{ xxs: 12 }}></Grid>
       {EXTERNAL_LINKS.map((linkData) => (
         <Grid key={linkData.url} size={{ xxs: 12, sm: 6 }}>
           <Button
