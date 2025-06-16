@@ -36,7 +36,7 @@ export function FavoriteButton({
         variant="outlined"
         startIcon={isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
         onClick={handleClick}
-        sx={{ margin: 2, ...sx }}
+        sx={{ margin: 2, fontSize: { xxs: '1rem', xs: '1.5rem' }, ...sx }}
       >
         {isFavorite ? 'Remove From Favorites' : 'Add To Favorites'}
       </Button>
