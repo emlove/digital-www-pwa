@@ -24,13 +24,17 @@ export function CampsItemPage() {
       <Typography variant="h5">
         {!camp ? <Skeleton /> : camp.location_name}
       </Typography>
-      <Typography variant="body1">
-        {!camp
-          ? Array(4)
-              .fill(null)
-              .map((_, index) => <Skeleton key={index} />)
-          : renderCampEvents()}
+      <Typography
+        variant="body1"
+        sx={{ paddingBottom: (theme) => theme.spacing(3) }}
+      >
+        {!camp ? <Skeleton /> : camp.description}
       </Typography>
+      {!camp
+        ? Array(4)
+            .fill(null)
+            .map((_, index) => <Skeleton key={index} />)
+        : renderCampEvents()}
     </>
   );
 }

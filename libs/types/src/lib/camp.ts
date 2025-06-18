@@ -1,6 +1,7 @@
 export interface CampItem {
   id: number;
   name: string;
+  description: string | null;
   location_name: string;
   location_id: number;
   event_count: number;

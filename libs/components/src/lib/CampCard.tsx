@@ -1,5 +1,6 @@
 'use client';
 import type { CampItem } from '@digital-www-pwa/types';
+import { MAX_DESCRIPTION_LENGTH } from '@digital-www-pwa/utils';
 import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
@@ -16,7 +17,10 @@ export function CampCard({ camp }: { camp: CampItem }) {
           <CardHeader title={camp.name} subheader={camp.location_name} />
           <CardContent>
             <Typography variant="subtitle1">
-              {camp.event_count} {camp.event_count === 1 ? 'event' : 'events'}
+              {camp.description &&
+              camp.description.length > MAX_DESCRIPTION_LENGTH
+                ? `${camp.description.substring(0, MAX_DESCRIPTION_LENGTH)}…`
+                : camp.description}
             </Typography>
           </CardContent>
         </CardActionArea>
